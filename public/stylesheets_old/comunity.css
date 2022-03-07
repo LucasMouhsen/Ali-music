@@ -1,0 +1,75 @@
+.comunity main{
+    margin-top: 90px;
+}
+.comunity .container-main{
+    width: 95%;
+    margin: 20px auto;
+    color: var(--color-header);
+    background-color: #fff;
+}
+.comunity .div_publicar{
+    margin-bottom: 20px;
+    box-shadow: 0 3px 3px 0px;
+    border-radius: 3px;
+    display:grid;
+    align-items: center;
+    justify-content: space-around;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    padding: 10px 0;
+}
+.comunity .div_publicar input{
+    text-indent: 3px;
+    margin: 10px 0;
+}
+
+.comunity .div_filtrar{
+    background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 3px 0px;
+    border-radius: 3px;
+    font-size: 11px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.comunity section .art{
+    background-color: #fff;
+    box-shadow: 0 3px 3px 0px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+.comunity section .art h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #696969;
+}
+.comunity section .art iframe{
+    width: 100%;
+    height: 50vh;
+}
+.comunity section .art img{
+    height: 250px;
+    object-fit: contain;
+}
+.comunity section .art .div_p{
+    font-size: 11px;
+    padding: 10px;
+    background-color: #c6c6c6;
+}
+
+@media (min-width: 425px){
+    .comunity .container-main{
+        width: 90%;
+    }
+}
+@media (min-width: 769px){
+    .comunity .container-main{
+        width: 80%;
+    }
+    .comunity section .art{
+        
+    }
+}
+

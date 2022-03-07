@@ -1,0 +1,211 @@
+header{
+    position: fixed;
+    padding: 1.1% 10px;
+    color: #fff;
+    font-size: 28px;
+    width: 100%;
+    height: 10vh;
+    z-index: 10;
+    background-color: #11101d;
+    display: grid;
+    grid-template-columns: 15% auto;
+}
+header .i_sidebar #btn2{
+    color: #fff;
+    position: fixed;
+    left: -5px;
+    top: 3%;
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    transition: all 0.5s ease;
+} 
+header .logo_header{
+    margin-left: 0;
+    align-self: center;
+}
+
+@media (min-width: 769px){
+    header{
+        grid-template-columns: 5% auto;
+    }
+}
+
+/* header a{
+    color: var(--color-a-header);
+    transition: all .3s;
+}
+header a:hover{
+    color: var(--color-a-fav);
+}
+
+header .flex-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+
+
+header .flex-container .div_logo_header{
+    width: 35%;
+    padding-left: 5px;
+    grid-area: logo;
+}
+
+header .flex-container .div_logo_header img{
+    width: 100%;
+}
+
+header .flex-container .div_cuenta{
+    width: 50%;
+    text-align:right;
+}
+
+header .flex-container .div_favoritos{
+    display:none;
+    grid-area: fav;
+}
+
+header .flex-container .div_carrito{
+    width: 15%;
+    text-align:right;
+    padding-right: 5px;
+    grid-area: carrito;
+}*/
+
+
+/* Boton */
+
+
+/* header .flex-container .div_burger{
+    width: 5%;
+    text-align:center;
+    padding-left: 5px;
+    color: #fff;
+}
+header .flex-container .div_burger input{
+    display:none;
+}
+header .flex-container .div_burger ul{
+    display:none;
+    position: absolute;
+    background-color: var(--color-header);
+    width: 130px;
+    height: 150px;
+    border: 1px solid var(--color-border-navegacion);
+    z-index: 10;
+    left: 0;
+    margin-top: 1px;
+    opacity: 0;
+    transition: all 5s;
+}
+header .flex-container .div_burger ul li a i{
+    margin-right: 5px;
+}
+header .flex-container .div_burger input:checked ~ ul{
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+    opacity: 1;
+}
+header .flex-container .div_burger ul li{
+    font-size:12px;
+    align-self: center;
+} */
+
+
+/* Fin del boton */
+
+
+/* header .flex-container .div_barra_de_busqueda{
+    position: relative;
+    max-width: 300px;
+    margin-right: 5px;
+    margin-bottom: 5px ;
+    grid-area: barra;
+}
+
+header .flex-container .div_barra_de_busqueda input{
+    width: 100%;
+}
+
+header .flex-container .div_barra_de_busqueda a{
+    position: absolute;
+    color: black;
+    right: 3px;
+    top: 2.6px;
+}
+
+header .div_navegacion_header{
+    display:none;
+}
+
+@media (min-width: 769px){
+    header{
+        display:block;
+    }
+    
+    header .flex-container{
+        display: grid;
+        grid-template-areas: 
+        "logo barra fav carrito"
+        "logo barra fav carrito";
+        grid-template-rows: 25% 30px;
+        grid-template-columns: 0.7fr 1.3fr 54px;
+    }
+
+    header .flex-container .div_logo_header{
+        width: 200px;
+    }
+    header .flex-container .div_cuenta{
+        display:none;
+    }
+    header .flex-container .div_favoritos{
+        display: flex;
+        flex-direction:row-reverse;
+        padding-top: 2px;
+        align-self: center;
+        padding-right: 15px;
+    }
+    header .flex-container .div_carrito{
+        display: flex;
+        font-size: 20px;
+        align-self: center;
+        padding-right: 25px;
+    }
+    header .flex-container .div_burger{
+        display:none;
+    }
+    header .flex-container .div_barra_de_busqueda{
+        margin: 0 15px;
+        margin-top: 10px;
+        justify-self: right;
+    }
+    header .flex-container .div_barra_de_busqueda i{
+        color: #000;
+    }
+    header .div_navegacion_header{
+        width: 100%;
+        display:grid;
+        grid-template-columns: 70% 30%;
+        border: 1px solid var(--color-border-navegacion);
+        background-color: var(--color-nav-header);
+    }
+    header .div_navegacion_header ul{
+        display:flex;
+        justify-content: space-around;
+    }
+    header .div_navegacion_header .ul_navegacion_header{
+        border-right: 1px solid var(--color-border-navegacion);
+    }
+    header .div_navegacion_header a{
+        padding: 0 9px;
+    }
+    header .div_navegacion_header a i{
+        font-size: 18px;
+        margin: 5px 0;
+        margin-right: 7px;
+    }
+    
+} */

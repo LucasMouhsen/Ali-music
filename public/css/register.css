@@ -1,0 +1,111 @@
+.register main {
+  margin-left: 5px;
+  margin-right: 5px;
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05); }
+
+.register h1 {
+  margin: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: var(--color-h1-rgba);
+  margin-bottom: 50px; }
+
+.register main div.avatar {
+  font-size: 170%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+  color: #fff; }
+
+.register main div.avatar i {
+  font-size: 60px;
+  color: #fff;
+  padding: 15px; }
+
+.register main div.datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+
+.register div.datos div {
+  padding: 10px;
+  margin: 20px;
+  width: 75%; }
+
+.register main div.datos input {
+  padding: 10px;
+  width: 100%; }
+
+.register main div.datos small {
+  color: red; }
+
+.register main div.datos span {
+  color: red;
+  background-color: transparent;
+  width: 100%;
+  text-align: center; }
+
+.register main div.redes {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.register main div.redes div {
+  margin: 5px 15px;
+  position: relative; }
+
+.register main div.redes input {
+  margin: 10px 0px;
+  width: 180PX;
+  text-align: left;
+  padding: 8px;
+  font-size: 15px; }
+
+.register main div.redes i {
+  color: black;
+  position: absolute;
+  right: 6px;
+  top: 20px; }
+
+.register main div.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px; }
+
+.register main div.buttons input {
+  width: 100px;
+  height: 30px; }
+
+.register main div.buttons input.crear {
+  background-color: #0000ff;
+  color: white; }
+
+@media (min-width: 425px) {
+  .register main {
+    margin: 20px 0; }
+  .register main div.redes {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 30px; }
+  .register div.datos div {
+    padding: 10px;
+    margin: 10px;
+    width: 45%; }
+  .register main div.datos input {
+    padding: 10px;
+    /* margin: 10px; */
+    width: 100%; }
+  .register footer {
+    position: relative;
+    bottom: 0;
+    width: 100%; } }
+
+@media (min-width: 769px) {
+  .register main {
+    margin: 100px auto;
+    max-width: 812px; } }

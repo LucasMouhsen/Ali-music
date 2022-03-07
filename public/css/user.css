@@ -1,0 +1,121 @@
+.user .display {
+  display: block; }
+
+.user .none {
+  display: none; }
+
+.user #img-preview {
+  border: 1px solid;
+  height: 25vh;
+  padding: 20px;
+  width: 25vh;
+  border-radius: 7px; }
+  .user #img-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 7px; }
+
+.user .form .button {
+  background-color: #ebebeb;
+  border: 0;
+  border-radius: 7px;
+  font-size: 14px;
+  padding: 10px 25px;
+  color: #4f4f4f;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
+  margin: 15px; }
+
+.user div.contain {
+  overflow-x: auto; }
+
+.user .oculto {
+  display: none; }
+
+.user table {
+  width: 90%;
+  margin: 30px auto;
+  background-color: #c6c6c6;
+  text-align: center;
+  box-shadow: 0 3px 3px 0px; }
+
+.user table th,
+.user table td {
+  background-color: #fff; }
+
+.user table tbody tr td {
+  height: 100px; }
+
+.user table tbody .td_img {
+  background-color: #fff; }
+
+.user table tbody .td_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; }
+
+.user table tbody .td_botton {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 120px; }
+
+.user table tbody .td_botton i {
+  padding: 5px 10px;
+  color: var(--color-a-fav); }
+
+/*css profile prueba*/
+body.user main div form div.img {
+  display: flex; }
+
+body.user main div form div.img img {
+  width: 50%; }
+
+/* Modal contact */
+.user .modal-delete {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.3s ease;
+  z-index: 9; }
+
+.user .show {
+  pointer-events: auto;
+  opacity: 1; }
+
+.user .model {
+  background-color: #fff;
+  width: 90%;
+  height: 50%;
+  max-width: 100%;
+  padding: 10px 50px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+  .user .model h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px; }
+  .user .model .submitDelete {
+    background-color: #ff0000;
+    color: #fff; }
+
+@media (min-width: 769px) {
+  .user #img-preview {
+    height: 35vh;
+    width: 35vh; }
+  .user .model {
+    height: 30%;
+    width: 30%; } }

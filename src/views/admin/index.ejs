@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/headBootstrap') %> 
+<body class="admin">
+    <%- include('../partials/sidebar') %> 
+
+    <main>
+        
+        <div class="container mb-5">
+            <!-- Table -->
+            <div class="row mb-5">
+                <div class="col-md-12 mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Productos</h5>
+                            <div class="filtros">
+                                <form action="" method="get" id="form">
+                                    <label for="category">Filtrar por categoria</label>
+                                    <select name="category" id="busqueda">
+                                        <option value="all" >Todas las categorias</option>
+                                        <% categories.forEach(category => { %>
+                                        <option value="<%=category.category%>" <%=old.category && old.category == category.category ? "selected" : null%>><%= category.category %></option>
+                                        <% }) %>
+                                    </select>
+                                    <div class="filtrosPrice">
+                                            
+                                                <input type="search" placeholder="Buscar" name="search" value="<%= old.search ? old.search : null %>">
+                                                <input type="number" name="price" id="price" placeholder="Precios hasta..." value="<%= old.price ? old.price : null %>"><!-- filtro por cuanto precio -->
+                                                <button class="button" type="submit">Filtrar</button>
+                                            </form>
+                                            <label for="menor">Mas barato a mas caro</label>
+                                            <input type="radio" name="orden" id="menor"><!-- ordeno de mas caro a mas barato -->
+                                            <label for="mayor">Mas caro a mas barato</label>
+                                            <input type="radio" name="orden" id="mayor"><!-- ordeno de mas barato a mas caro -->
+                                        </div>
+                                    <button class="button" id="restart">Borrar Filtros</button>
+                            </div>
+                            <table class="table container responsive">
+                                <thead class="container responsive">
+                                    <tr>
+                                        <th role="columnheader">Id</th>
+                                        <th role="columnheader">Imagen</th>
+                                        <th role="columnheader">Nombre</th>
+                                        <th role="columnheader" class="oculto">Precio</th>
+                                        <th role="columnheader" class="oculto">Estado</th>
+                                        <th role="columnheader">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table">
+                                    <% products.forEach(product => { %>
+                                        <tr role="">
+                                            <td id="category" style="display:none"><%= product.category.category %></td>
+                                            <td role="cell"><%= product.id %></td>
+                                            <td role="cell" class="td_img" ><img src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>" alt="producto"></td>
+                                            <td role="cell" id="data-name"><%= product.name %></td>
+                                            <td role="cell" class="oculto">$ <%= product.price %></td>
+                                            <td role="cell" class="oculto"><%= product.productStates.state %></td>
+                                            <td role="cell" class="td_botton p-1">
+                                                <button><a href="/admin/edit/<%= product.id %>"><i
+                                                            class="fas fa-edit"></i></a></button>
+                                                <button id="openDeleteAdmin"><i
+                                                        class="fas fa-trash"></i></button>
+                                                <div id="modal_delete_admin" class="modal-delete">
+                                                    <div class="model">
+                                                        <form
+                                                            action="/admin/delete/<%= product.id %>?_method=DELETE"
+                                                            method="POST">
+                                                            <div class="container mt-4">
+                                                                <h1>Estas seguro que deseas eliminar este producto?
+                                                                </h1>
+                                                                <button class="submitDelete button" type='submit'>Si</button>
+                                                            </div>
+                                                        </form>
+                                                        <button class="closeDelete button"
+                                                            id="closeDeleteAdmin">No</button>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>    
+                        </div>
+                    </div>    
+                </div>        
+            </div>   
+        </div>
+    </main>
+    <%- include('../partials/footer') %> 
+    <script src="/js/searchAdmin.js"></script> 
+    <script src="/js/admin.js"></script> 
+</body>
+</html>

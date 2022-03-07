@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+    <%- include('../partials/head') %>
+
+    <body class="cart">
+
+        <%- include('../partials/sidebar') %> 
+            <main>
+
+                <section class="entrega">
+                    <h2>Informacion de usuario</h2>
+                    <div class="entrega">
+                        <form action="">
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                            <input type="text" name="apellido" id="apellido" placeholder="Apellido">
+                            <input type="text" name="DNI" id="DNI" placeholder="DNI">
+                            <input type="email" name="email" id="email" placeholder="Correo">
+                            <input type="number" name="telefono" id="telefono" placeholder="telefono">
+                            <form action="">
+                                <input type="number" name="codigo postal" id="codigo postal"
+                                    placeholder="codigo postal">
+                                <input type="text" name="provincia" id="provincia" placeholder="provincia">
+                                <input type="text" name="ciudad" id="ciudad" placeholder="ciudad">
+                                <input type="text" name="calle" id="calle" placeholder="calle">
+                                <input type="number" name="N.calle" id="N.calle" placeholder="N.calle">
+                            </form>
+                </section>
+                <div class="box-button">
+                    <button class="button" type="submit">Continuar</button>
+                </div>
+                <h2>Informacion de Pago</h2>
+                <section class="pago">
+                    <div class="metodo">
+                        <section>
+                            <label for="debito">Tarjeta de debito</label>
+                            <input type="radio" id="debito" name="pago" value="dbto">
+                        </section>
+                        <section>
+                            <label for="credito">Tarjeta de credito</label>
+                            <input type="radio" id="credito" name="pago" value="credito">
+                        </section>
+                        <section class="efectivo">
+                            <label for="efectivo">Efetivo</label>
+                            <input type="radio" id="efectivo" name="pago" value="efect">
+                        </section>
+                    </div>
+                    <form action="">
+                        <input type="number" name="numero de tarjeta" id="numero de tarjeta"
+                            placeholder="numero de tarjeta">
+                        <div class="box-card">
+                            <button type="submit" class="button"><i class="fab fa-cc-visa"></i></button>
+                            
+                            <button type="submit" class="button"><i class="fab fa-cc-mastercard"></i></button>
+                        </div>
+                        <select name="numero de cuotas" id="numero de cuotas">
+                            <option value="" selected hidden>Numero de cuotas</option>
+                            <option value="dos">2</option>
+                            <option value="seis">6</option>
+                            <option value="ocho">8</option>
+                            <option value="diez">10</option>
+                            <option value="quince">15</option>
+                            <option value="veinticuatro">24</option>
+                        </select>
+                        <input type="name" name="" id="nombre" placeholder="nombre como figura en la tarjeta">
+                        <input type="number" name="codigo" id="codigo" placeholder="codigo postal">
+                        <input type="number" name="DNI" id="DNI" placeholder="DNI">
+                        <div class="box-form-n">
+                            <strong>
+                                <p>Fecha de Nacimiento</p>
+                            </strong></strong>
+                            <input type="date" name="fecha"></input>
+                        </div>
+                    </form>
+                </section>
+                <section class="rsm">
+                    <div class="metodo">
+                        <section>
+                            <label for="debito">Tarjeta de debito</label>
+                            <input type="radio" id="debito" name="pago" value="dbto">
+                        </section>
+                        <section>
+                            <label for="credito">Tarjeta de credito</label>
+                            <input type="radio" id="credito" name="pago" value="credito">
+                        </section>
+                        <section class="efectivo">
+                            <label for="efectivo">Efetivo</label>
+                            <input type="radio" id="efectivo" name="pago" value="efect">
+                        </section>
+                    </div>
+                    <div class="button-pago">
+                        <button type="submit">Rapipago</button>
+                        <button type="submit">Sucursal</button>
+                        <button type="submit">Mercado pago</button>
+                    </div>
+                    <a href="/">
+                        <div class="button-final">
+                            <button class="button" type="submit">Finalizar Compra</button>
+                        </div>
+                    </a>
+                </section>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+</html>

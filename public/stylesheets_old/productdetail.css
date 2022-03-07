@@ -1,0 +1,276 @@
+/* MAIIN */
+
+.details{
+    background-color: var(--color-background);
+}
+
+.details h2, .details p, .details h3, .details span{
+    color : #fff
+}
+
+.details main{
+    width:88%;
+    margin:10px auto;
+}
+
+.details main div.caja-con-imagenes {
+    padding: 0px;
+    display: flex;
+}
+
+.details main div.second-img {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.details main div.second-img img {
+    width: 75%;
+    height: 23%;
+    background-color: #01020e1a;
+    margin: 25% 0 25% 25%;
+}
+
+
+.details main div.box-product{
+    margin: 15% auto; /* MARGIN SACADO EN DeSKTOP */
+    background-color: #01020e1a; /* nueva imagen */
+    width: 77%;
+    font-size: 20px;
+    box-shadow: 0px 0px 8px 0px;
+    border-radius: 8px;
+}
+.details main div.box-product a{
+    color: var(--color-h1);
+    transition: all .2s;
+}
+
+.details main div.box-product a:hover{
+    color: var(--color-a-fav);
+}
+
+.details main div.product{
+    position: relative;
+/*     background-color: var(--color-background); */
+    border-radius: 8px;
+}
+
+.details main div.img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.details main div.img img{
+    /* width: 100%; */
+    height: 75vh;
+    object-fit: contain;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.details main div.img i.fa-star{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 4vw;
+    color: var(--color-a-fav)
+}
+
+.details main div.descripcion{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.details main div.descripcion div.cant{
+    padding:10px;
+    text-align: center;
+}
+
+.details main div.descripcion div.cant button{
+    width: 26px;
+    border: 1px solid;
+    border-radius: 112px;
+    padding: 4px;
+    height: 26px;
+}
+
+.details main div.descripcion a{
+    display: flex;
+    align-items: center;
+}
+
+.details main div.detalles{
+    padding: 3%;
+}
+
+.details main div.detalles ul li{
+    padding: 10px 0px;
+}
+
+.details main div.name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+
+.details main section.relacionados{
+    margin: 30px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* background-color: #fff; */
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 0px;
+}
+
+.details main section.relacionados h2{
+    background-color: var(--color-h1-rgba);
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.details main section.relacionados article{
+    margin: 15px 0px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: var(--color-art-div); */
+    color: var(--color-art-off);
+    border-radius: 8px;
+}
+
+.details main section.relacionados article a{
+    color:var(--color-art-off)
+}
+
+.details main section.relacionados article div.imageContain{
+    /* border-bottom: 1px solid var(--color-border-art); */
+    position: relative;
+    /* background-color: #fff; */
+    width: 100%;
+    height: 270px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.details main section.relacionados img{
+    object-fit: contain;
+    height:100%;
+    width: 100%;
+}
+
+.details main section.relacionados i.fa-star{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--color-a-fav)
+}
+
+.details main section.relacionados article div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.details main section.relacionados a.detail{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    padding: 4px;
+    width: 20%;
+    background-color: #0b0b0d00;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    margin: 7px;
+}
+
+
+
+
+/* TABLET */
+
+
+@media (min-width:425px) {
+
+    .details main{
+    font-size: 30px;
+    }
+    
+    .details main div.second-img {
+        position: initial;
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+    
+    .details main div.second-img img {
+        width: 75%;
+        height: 23%;
+        background-color: #01020e1a;
+        margin: 25% 0 25% 25%;
+    }
+    
+    .details main div.box-product{
+        /* margin: 15% auto; */ /* MARGIN SACADO EN DeSKTOP */
+        background-color: #01020e1a; /* nueva imagen */
+        width: 90%;
+        font-size: 20px;
+        box-shadow: 0px 0px 8px 0px;
+        border-radius: 8px;
+    }
+
+    .details main div.product{
+        display: flex;
+    }
+
+    .details main div.contain{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-radius: 0px 8px 0px 0px;
+    }
+
+    .details main div.descripcion div.cant{
+        width: 100%;
+    }
+}
+
+@media (min-width:769px) {
+
+    .details main{
+        width:100%;
+        margin-top:50px
+    }
+    
+    
+    .details main section.relacionados{
+        width:75%;
+        margin: 50px auto;
+    }
+
+
+    .details main section.relacionados button{
+        font-size: 22px;
+    }
+
+    .details main section.relacionados article:hover{
+        box-shadow: 0px 0px 13px 0px var(--color-border-art);
+    }
+
+}

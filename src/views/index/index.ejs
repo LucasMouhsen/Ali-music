@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+    <body class="home">
+        <main>
+            <%- include('../partials/sidebar') %>
+
+
+                <div class="slideshow">
+                    <div class="slider slider-1">
+                        <div class="item">
+                            <img class="img2"
+                            src="/images/banner_alimusic.gif"
+                            width="100%"
+                            alt="">
+                            <img class="img1"
+                                src="/images/banner_mobile_alimusic.gif"
+                                alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img2"
+                                src="/images/banner_alimusic2.gif"
+                                width="100%">
+                            <img class="img1"
+                                src="https://images.unsplash.com/photo-1601375863404-5b912f4536df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80"
+                                alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img2"
+                                src="/images/banner_alimusic3.gif"
+                                width="100%">
+                            <img class="img1"
+                                src="https://images.unsplash.com/photo-1601375863404-5b912f4536df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <section class="novedades">
+
+                    <div class="div_container">
+                        <% products.forEach(product=> { %>
+                            <% if (product.statusId === 2 ) { %>
+                                <article class="art">
+                                    <div class="div_img">
+                                        <a href="/products/detail/<%= product.id%>">
+                                            <img src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>" alt="producto">
+                                        </a>
+                                        <p class="name">
+                                            <%= product.name %>
+                                        </p>
+                                    </div>
+                                    
+                                </article>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                </section>
+                <%- include('../partials/carrusel') %>
+
+                    
+        </main>
+        <%- include('../partials/footer') %>
+            <script src="/js/carrusel.js"></script>
+            <script src="/js/index.js"></script>
+
+    </body>
+
+</html>

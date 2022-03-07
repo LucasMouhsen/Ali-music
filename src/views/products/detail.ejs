@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head') %> 
+<body class="details">
+    <%- include('../partials/sidebar') %> 
+    <main>
+            <div class="box-product">
+                <div class="product">
+                    <div class="second-img">
+                        <% if (product.images.length != 0 ) { %>
+                            <% for( let i = 1; i < product.images.length; i++ ) { %>
+                                <img class="img-2" src="/images/articulos/<%= product.images[i].image %>"  alt="<%= product.name + product.model %>" id="images">
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div class="img">
+                        <img src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>"  alt="<%= product.name + product.model %>" id="firstImage">
+                        <i id="star" class="far fa-star"></i>
+                    </div>
+                    <div class="contain">
+                        <div class="name">
+                            <i class="fas fa-angle-double-left"></i>
+                            <h2><%= product.name %> </h2>
+                                <i class="fas fa-angle-double-right"></i>
+                        </div>
+                        <div class="descripcion">
+                            
+                            <p>$ <%= product.price %> </p>
+                        
+                            <% if (locals.userLogin) { %>
+                                <form action="/products/cart/<%= product.id %>?_method=PUT" method="POST">
+                                
+                                    <a href="">
+                                        <button class=" button" type="submit">Comprar</button>
+                                        
+                                    </a>
+                                </form>
+                            <% }else{ %>
+                                <span class="span">Tienes que estar logeado para comprar</span>
+                            <% } %>
+                            <!-- <div class="cant">
+                                <button type="button">-</button>
+                                <span>01</span>
+                                <button type="button">+</button>
+                                <p>Cantidad</p>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="detalles">
+                    <h3>Detalles del producto</h3>
+                    <p><%= product.description %> </p>
+                </div>
+            </div>
+            
+        <h2 class="product_rel">Productos relacionados</h2>
+        <section class="relacionados">
+            <% products.forEach(product => { %>
+                <article>
+                    <a href="/products/detail/<%= product.id %>">
+                        <div class="imageContain">
+                            <i class="far fa-star"></i><img src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>" alt="producto">
+                        </div>
+                        <div>
+                            <p><%= product.name %> </p>
+                            <p>$ <%= product.price %> </p>
+                            <a href="/products/detail/<%= product.id %>" class="detail">
+                                Ver más
+                            </a>
+                        </div>
+                    </a>
+            </article>
+
+            <% }) %>
+            <!--  -->
+    
+        </section>
+    </main>
+    <%- include('../partials/footer') %> 
+    <script src="/js/productDetail.js"></script>
+</body>
+</html>

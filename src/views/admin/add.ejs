@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/headBootstrap') %> 
+<body >
+    <%- include('../partials/sidebar') %> 
+
+    <main>
+        <form action="" method="POST" enctype="multipart/form-data" id="form1">
+            <div class="container mb-5 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Datos del producto</h5>
+                            <div class="form-group">
+                                <label for="name">Nombre del producto:</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto" value="<%=locals.old && old.name ? old.name : null%>">
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.name) { %>
+                                    <span class="errores"><%= errors.name.msg %> </span>
+                                <% } %>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Precio:</label>
+                                <input type="number" class="form-control" id="price" name="price" placeholder="Precio del producto" value="<%=locals.old && old.price ? old.price : null%>">
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.price) { %>
+                                    <span class="errores"><%= errors.price.msg %></span>
+                                <% } %>
+                            </div>
+                            <div class="form-group">
+                                <label for="discount">Descuento:</label>
+                                <input type="number" class="form-control" id="discount" name="discount" placeholder="Descuento" value="<%=locals.old && old.discount ? old.discount : null%>">
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.discount) { %>
+                                    <span class="errores"><%= errors.discount.msg %></span>
+                                <% } %>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Categorias:</label>
+                                <select name="category" id="category">
+                                    <option value="" hidden selected>Seleccione una categoria</option>
+                                  <% categories.forEach(category => { %>
+                                    <option value="<%= category.id %>"<% if (locals.old && old.category) { %>
+                                        <%= category.id == old.category ? "selected": null %>
+                                    <% } %> ><%= capitalizarPrimeraLetra(category.category) %></option>
+                                  <% }) %>
+                                </select>
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.category) { %>
+                                <span class="errores"><%= errors.category.msg %></span>
+                                <% } %>
+                            </div>
+                            <div class='description form-group'>
+                                <label for="description"> Descipción:</label>
+                                <textarea class="form-control" name="description" id="description" cols="30"
+                                    rows="10"><%=locals.old && old.description ? old.description : null%></textarea>
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.description) { %>
+                                <span class="errores"><%= errors.description.msg %></span>
+                                <% } %>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Agregar imagen:</label>
+                                <input class="img-input" type="file" name="image" id="image" multiple>
+                                <span class="error text-danger"></span>
+                                <% if (locals.errors && errors.image) { %>
+                                    <span class="errores"><%= errors.image.msg %> </span>
+                                <% } %>
+                            </div>
+                            <button type="submit" class=" button">Agregar</button>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </form> 
+    <%- include('../partials/footer') %> 
+    <script src="/js/addProduct.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head') %>
+
+    <body class="login">
+        <%- include('../partials/sidebar') %>
+            <main class="login">
+                <div class="v">
+                    <a href="/">volver</a>
+                </div>
+                <h4>Ingresar a <br>ALI MUSIC</h4>
+                <form action="" method="POST" id="form-login">
+                    <section class="datos">
+                        <div class="box-form">
+                            <input  type="email" name="email" id="email" placeholder="email">
+                            <div class="login-alert"> <small class="text-danger small">
+                                    <%= locals.errors && errors.email ? errors.email.msg : null %>
+                                </small>
+                                <small id="email-Errors"></small>
+                            </div>
+                        </div>
+                        <div class="box-form">
+                            <input  type="password" name="password" id="password" placeholder="contraseña">
+                            <div class="login-alert">
+                                <small class="text-danger small">
+                                    <%= locals.errors && errors.password ? errors.password.msg : null %>
+                                </small>
+                                <small id="password-Errors"></small>
+                            </div>
+
+                        </div>
+                        <span class="span" id ="error-empty"></span>
+
+                        <div class="box-remember">
+                            <input type="checkbox" name="recordar" id="recordar">
+                            <label id="recordar" for="recordar">Mostrar Contraseña</label>
+                        </div>
+                        <div class="box-remember">
+                            <input type="checkbox" name="recordar" id="recordar">
+                            <label for="recordar">Recordarme</label>
+                        </div>
+                    </section>
+                    <div class="recuperar">
+                        <a href="/">Recuperar contraseña</a>
+                    </div>
+                    <div class="box-button">
+                        <button type="submit">Acceder</button>
+                    </div>
+                    <div class="no-tienes-cuenta">
+                        <p>No tienes cuenta aun:
+                            <a href="/users/register">Registrate</a>
+                        </p>
+                    </div>
+                </form>
+                <!-- <div class="box-enlace">
+                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">Ingresar</div>
+                </div> -->
+            </main> 
+            <%- include('../partials/footer') %>
+            <!-- <script src="/js/googleLogin.js"></script>  --> 
+            <script src="/js/login.js"></script>
+
+    </body>
+
+</html>

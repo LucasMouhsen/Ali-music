@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head') %>
+
+
+    <body class="cart">
+
+        <%- include('../partials/sidebar') %> 
+            <main>
+                <h2>Carrito</h2>
+                <section class="carrito">
+                    <div class="product">
+                        <% products.forEach(product=> { %>
+                            <% if (product.cart===1) { %>
+                                <div class="compra">
+
+                                    <div class="img_container">
+                                        <img src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>" alt="producto">
+                                    </div>
+
+                                    <div class=" product">
+                                        <div class="detalles">
+                                            <p>
+                                                <%= product.name %>
+                                                <p>
+                                                    <p>Precio:$<%= product.price %>
+                                                            <div class="mas">
+                                                                <i class="fas fa-plus-circle"></i>
+                                                                <p>01</p>
+                                                                <i class="fas fa-minus-circle"></i>
+                                                            </div>
+                                                <p>Cantidad</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <% } %>
+                                    <% }) %>
+
+                    </div>
+                    <div class="pago">
+                        <div class="descuento">
+                            <strong>
+                                <p>Codigo de Descuento</p>
+                            </strong>
+                            <div class="i-descuento">
+                                <input type="text" name="numero"><a href="/products/infoUser">
+                                    <button type="submit"><i class="fas fa-percent"></i></button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <p>Subtotal:$
+                            </p>
+                            <p>Total:$****</p>
+                            <a href="/products/infoUser">
+                                <button type="submit">Comprar</button>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+</html>

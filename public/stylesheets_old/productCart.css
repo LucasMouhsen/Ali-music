@@ -1,0 +1,352 @@
+/*carrito*/
+body.cart{
+    background-size: cover;
+}
+.cart main {
+    width:90%;
+    margin:  0 auto;
+    max-width: 800px;
+}
+.cart main i{
+color: black;
+}
+.cart main h2{
+    text-align: center;
+    font-size: 25px;
+    margin: 30px 0px;
+    color: #fff;
+}
+.cart main p{
+    text-align: center;
+}
+.cart main section.carrito{
+    display:flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.cart main section.carrito div.product{
+    width: 100%;
+}
+.cart main section.carrito div.compra{
+    border: solid 1px var(--color-border-art);
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin : 10px 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px;
+    background-color: #fff;
+}
+.cart main section.carrito div.compra div.img_container img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: contain;
+}
+.cart main section.carrito div.compra div.img_container{
+    width: 50%;
+    height: 120px;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+}
+.cart main section.carrito div.compra div.product{
+    width: 50%;
+}
+.cart main section.carrito div.detalles{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    font-size: 14px;
+}
+
+.cart main section.carrito div.detalles .mas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    border:solid 1px var(--color-border-art);
+}
+.cart main section.carrito div.pago{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+    box-shadow: 0px 0px 5px 0px;
+    background-color: white;
+    border: 1px solid var(--color-border-art);
+    border-radius: 5px;
+}
+.cart main section.carrito div.pago div.descuento{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.cart main section.carrito div.pago div.descuento div.i-descuento{
+display: flex;
+padding: 0px 6px;
+}
+.cart main section.carrito div.pago div.descuento div.i-descuento button{
+    padding: 2px;
+}
+.cart main section.carrito div.total{
+    font-size: 20px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* flex-grow: 1; */
+}
+.cart main section.carrito div.total button{
+   color: white;
+   background-color: blue;
+   width: 100%;
+   height: 50px;
+   font-size:  22px;
+}
+/*carrito-entrega*/
+.cart main section.entrega{
+margin-bottom: 30px;
+margin-top: 30px;
+}
+.cart main section.entrega form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.cart main section.entrega form input,section.usuario form input{
+    width: 45%;
+    height: 36px;
+    margin: 15px 7px;
+    margin-bottom: 0px;
+}
+.cart main div.box-button button{
+padding: 15px;
+}
+.cart main  div.box-button {
+  margin: 40px 0px;
+  text-align: center;
+    }
+/*section-pago*/
+.cart main section.pago div.metodo {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+}
+
+.cart main section.pago form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 7px;
+    align-items: center;
+}
+.cart main section.pago select{
+    margin: 15px 0px 0px 0px;
+    width:70%;
+    height: 30px;
+}
+.cart main section.pago form input{
+    width: 100%;
+    height: 33px;
+    margin: 14px 0px;
+    margin-bottom: 1px;
+}
+.cart main section.pago form div.box-card button{
+font-size:  30px;
+margin:0px 16px;
+margin-top: 8px;
+}
+.cart main section.pago form div.box-form-n p{
+    margin-top: 30px;
+    }
+
+/*section rsm*/
+.cart main section.rsm div.button-pago{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cart main section.rsm div.button-pago button{
+    width: 80%;
+    height: 30px;
+    margin: 15px 0px;
+}
+.cart main section.rsm div.button-final button{
+    width: 45%;
+    height: 40px;
+    background-color:gray;
+    color:white
+}
+.cart main section.rsm div.button-final{
+display: flex;
+justify-content:center;
+margin-top: 10px;
+
+}
+.cart main section.rsm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 25px;
+    }
+    .cart main section.rsm div.metodo {
+        width:45%
+    }
+    .cart main section.rsm div.metodo section,.cart main section.pago div.metodo section{
+        font-size: 12px;
+        border:1px solid black;
+        background-color:white;
+        margin:0px 0px 40px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 35px;
+        width:100%;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .cart main section.rsm form{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin-left: 2px;
+        width:47%;
+    }
+    .cart main section.rsm{
+        justify-content: space-between;
+    }
+    .cart main section.rsm div.button-pago {
+        width:45%;
+    }
+    .cart section.rsm a{
+        margin:0px auto
+    }
+    .cart main section.rsm div.button-final button{
+        width:100%;
+    }
+@media (min-width:425px){
+    .cart main section select{
+        margin: 6px 0px 0px 7px;
+    width: 53%;
+    }
+    .cart main section.carrito div.compra {
+        flex-wrap: nowrap;
+    }
+    .cart main section.carrito div.compra div.product {
+        width: 30%;
+    }
+.cart main section.carrito div.detalles {
+    font-size: 11px;
+}
+
+.cart main section.carrito div.compra div.descuento input{
+    width:76%
+}
+.cart main section.carrito div.pago{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-evenly;
+}
+.cart main section.pago ,
+.cart main section.rsm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 25px;
+    }
+    .cart main section.pago div.metodo,
+    .cart main section.rsm div.metodo {
+        width:45%
+    }
+    .cart main section.pago div.metodo section,
+    .cart main section.rsm div.metodo section{
+        font-size: 12px;
+        border:1px solid black;
+        background-color:white;
+        margin:0px 0px 40px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 35px;
+        width:100%;
+    }
+    .cart main section.pago form,
+    .cart main section.rsm form{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin-left: 2px;
+        width:47%;
+    }
+    .cart main section.rsm{
+        justify-content: space-between;
+    }
+    .cart main section.rsm div.metodo,
+    .cart main section.rsm div.button-pago {
+        width:45%;
+    }
+    .cart main section.rsm a{
+        margin:0px auto
+    }
+    .cart main section.rsm div.button-final button{
+        width:100%;
+    }
+    .cart main section.pago form input {
+        width: 100%;
+        height: 30px;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+    .cart main section.pago div.box-card{
+        display:flex;
+        justify-content:space-around;
+        width: 60%;
+    }
+    .cart main section.pago form div.box-card button{
+        margin:0px;
+    }
+    .cart main section.pago select{
+        width:100%;
+        margin-top: 10px;
+        margin-bottom:10px;
+    }
+.cart main section div.div_container,.cart main div.box-form-n{
+    width:100%;
+    }
+    @media (min-width:769px){
+    .cart main section.carrito{
+        display:flex;
+      flex-wrap: nowrap;
+    }
+    
+    .cart main section.carrito div.pago {   
+        margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    }
+    .cart main section.carrito div.pago div.descuento{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+}

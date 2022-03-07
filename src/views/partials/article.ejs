@@ -1,0 +1,13 @@
+
+<article class="art">
+    <a class="a_img" href="/products/detail/<%= product.id %>">
+        <img src="/images/articulos/<%= product.image %>" alt="">
+    </a>
+    <div>
+        <p class="off"><%= product.discount>0 ? product.discount + '% OFF' : null %></p>
+        <p class="precio">$<%= product.price %></p>
+    </div>
+    <nav class="nav_fav">
+        <a href=""><i class="far fa-star"></i></a>
+    </nav>
+</article>

@@ -1,0 +1,16 @@
+<div class="slider-container">
+    <div class="slider-content">
+        <% products.forEach(product=> { %>
+            <% if (product.productStates.state=='new' ) { %>
+                <a class="slider-single" href="/products/detail/<%= product.id%>">
+                    <img class="slider-single-image"
+                        src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>"
+                        alt="producto">
+                    <h1 class="slider-single-title">
+                        <%= product.name %>
+                    </h1>
+                </a>
+                <% } %>
+                    <% }) %>
+    </div>
+</div>

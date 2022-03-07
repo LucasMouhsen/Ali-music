@@ -1,0 +1,52 @@
+.user div.contain{
+    overflow-x:auto;
+}
+
+.user .oculto{
+    display:none
+}
+
+.user table{
+    width: 90%;
+    margin: 30px auto;
+    background-color: #c6c6c6;
+    text-align: center;
+    box-shadow: 0 3px 3px 0px;
+}
+.user table th,
+.user table td{
+    background-color: #fff;
+}
+.user table tbody tr td{
+    height: 100px;
+}
+.user table tbody .td_img{
+    background-color: #fff;
+}
+.user table tbody .td_img img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain
+}
+.user table tbody .td_botton{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height:120px
+}
+.user table tbody .td_botton i{
+    padding: 5px 10px;
+    color: var(--color-a-fav)
+}
+
+/*css profile prueba*/
+body.user main div form div.img{
+    display:flex;
+
+}
+
+body.user main div form div.img img{
+    width : 50%
+    
+}

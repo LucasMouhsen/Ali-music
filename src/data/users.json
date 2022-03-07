@@ -1,0 +1,32 @@
+[
+  {
+    "userName": "Sherlock",
+    "firstName": "Lucas",
+    "lastName": "Diaz Mouhsen",
+    "email": "lucasmouhsen@gmail.com",
+    "number": 1131890767,
+    "password": "$2a$10$/bE4g7zNuviNO3m8mDFfOOmPe2X.alo/BaaTjpnSwbzd3viJ3laK2",
+    "avatar": "avatar_default.png",
+    "rol": 1
+  },
+  {
+    "userName": "Sherlock",
+    "firstName": "Aldo",
+    "lastName": "Orden",
+    "email": "aldoorder@gmail.com",
+    "number": 123456789,
+    "password": "$2a$10$odhKeE.f6PnWATH4vHdLTO6ozLhJ9LR4kHw0IObtLTWSNkoM7r5K2",
+    "avatar": "avatar_default.png",
+    "rol": 1
+  },
+  {
+    "userName": "Sherlock",
+    "firstName": "aldo",
+    "lastName": "orden",
+    "email": "aldo@gmail.com",
+    "number": 1131890767,
+    "password": "$2a$10$xEayb5s2tF7YNVB6swkjG.7PBpL1C9nIL5Vbk8347eKpL90Xddi5S",
+    "avatar": "avatar_default.png",
+    "rol": 1
+  }
+]

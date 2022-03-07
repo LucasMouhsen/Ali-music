@@ -1,0 +1,138 @@
+.login main {
+  margin-left: 5px;
+  margin-right: 5px;
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05); }
+
+.login main a {
+  color: #ff4500;
+  text-decoration: underline;
+  font-size: 12px; }
+
+.login div.v {
+  padding-left: 7px;
+  padding-top: 7px; }
+
+.login .span {
+  color: red; }
+
+.login main label, .login main p {
+  color: #fff;
+  padding: 2px; }
+
+.login main h4 {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 20px;
+  color: #fff; }
+
+.login form {
+  max-width: 870px;
+  margin: 0px auto; }
+
+.login main section.datos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.login main section.datos div.box-form {
+  width: 90%; }
+
+.login main section.datos div.box-form input {
+  margin-top: 15px;
+  display: flex;
+  height: 30px;
+  width: 100%;
+  text-align: start; }
+
+.login main div.box-remember {
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 7px 0px; }
+
+.login main div.box-remember input {
+  margin-right: 10px; }
+
+.login main div.recuperar {
+  text-align: center;
+  margin: 25px 0px 10px; }
+
+.login main div.box-button {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0px 0px; }
+
+.login main div.box-button button {
+  width: 100px;
+  height: 30px; }
+
+.login main div.box-enlace {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center; }
+
+.login main div.login-alert {
+  color: red;
+  display: flex;
+  flex-direction: column; }
+
+.login main div.box-enlace button {
+  width: 260px;
+  height: 30px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 5px 2px;
+  flex-direction: row-reverse; }
+
+.login main div.no-tienes-cuenta {
+  text-align: center;
+  margin: 10px 0px 15px; }
+
+@media (min-width: 425px) {
+  .login main a {
+    text-decoration: underline;
+    font-size: 15px; }
+  .login main h4 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 25px; }
+  .login main section.datos div.box-form {
+    width: 90%; }
+  .login main section.datos div.box-form input {
+    height: 40px; }
+  .login main div.box-button button {
+    height: 30px; } }
+
+@media (min-width: 769px) {
+  .login main {
+    margin: 100px auto;
+    max-width: 812px;
+    padding: 50px 15px; }
+  .login main div.v a {
+    text-decoration: underline;
+    font-size: 20px; }
+  .login main h4 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 25px; }
+  .login main section.datos div.box-form {
+    width: 70%; }
+  .login main section.datos {
+    margin: 30px 0px; }
+  .login main section.datos div.box-form input {
+    height: 40px; }
+  .login main div.box-remember {
+    width: 70%; }
+  .login main div.box-button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px 15px 0px; } }

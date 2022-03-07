@@ -1,0 +1,258 @@
+[
+  {
+    "name": "THE SO4",
+    "description": "Body style: S Back & Sides: Figured walnut",
+    "price": 14999,
+    "discount": 15,
+    "category": 1,
+    "statusId": 1
+  },
+  {
+    "name": "THE SO1",
+    "description": "Body style: S Back & Sides: Figured walnut",
+    "price": 14999,
+    "discount": 15,
+    "category": 1,
+    "statusId": 1
+  },
+  {
+    "name": "Bajo Eléctrico Squier ",
+    "description": "Affinity Precision Pj,Mástil de arce con perfil en C y diapasón de palosanto de 20 trastes Pastilla del puente Standard Jazz Bass de bobina simple y pastilla Precision Bass® de bobina simple dividida Controles de volumen independientes para cada pastilla Golpeador en color negro",
+    "price": 69952,
+    "discount": 10 ,
+    "category": 1,
+    "statusId": 1
+  },
+  {
+    "name": "Bajo Ibanez Tmb100 ",
+    "description": "Tmb-100 Bk Talman Black, Forma del cuerpo: Talman Acabado: Uretano Cuerpo: Álamo Mango: Maple Trastera: Jatoba Trastes: 20 Medium Escala: 34” Puente: B10 Micrófonos: Dynamix P Split-coil y Dynamix J Single-coil Controles: 1 x Volume/Balancer, 1 x Treble/Bass Boost/Cut",
+    "price": 56350,
+    "discount": 10 ,
+    "category":1,
+    "statusId": 1
+  },
+  {
+    "name": "Bajo Yamaha Trbx505 ",
+    "description": "Bb Brick Burst, Cuerpo: Caoba sólida Trastera: Rosewood Mango: Maple y Caoba (5 piezas) Micrófono del Mango: HHB5n (Alnico V) Micrófono del Puente: HHB5b (Alnico V) Puente: Cromado (18mm) Hardware: Black Niquel Trastes: 24 Clavijero: Cromado Funda: Genérica 5 Cuerdas",
+    "price": 124410,
+    "discount": 10 ,
+    "category":1,
+    "statusId": 1
+  },
+  {
+    "name": "Viola Vendoma JVA-01",
+    "description": "Viola Marca Vendoma modelo JVA-01 tamaño 16 pulgadas - Tapa de Abeto Maciza Fondo y Fajas de Maple Macizo - Tastiera y Accesorios de Ebano- Resina - Estuche Arco con Cerda Natural y Talón de Madera de Ebano",
+    "price": 20390,
+    "discount": 10 ,
+    "category":1,
+    "statusId": 1
+  },
+  {
+    "name": "Ukelele Soprano Con Funda",
+    "description": "Fabricado integralmente en madera de Tilo Nombre científico de la madera: Tilia Cordata Diapason y Puente de PVC de Alta Resistencia 4 Cuerdas encordadas de Nylon blanco Clavijas metálicas abiertas con paletillas de color blanco Terminación satinada Funda tipo OXFORD 420D ULTRA RESISTENTE Dimensiones: Alto: 54cm Ancho: 16,5cm",
+    "price": 2390,
+    "discount": 10 ,
+    "category":1,
+    "statusId": 1
+  },
+  {
+    "name": "Acordeón Hohner Bravo Ii 48b",
+    "description": "Cantidad de bajos: 48 Tipo de acordeón: Cromático a piano Cantidad de teclas: 26 Incluye estuche: Sí Peso del acordeón: 4.9 kg Ancho del acordeón: 18.5 cm Alto del acordeón: 31 cm Incluye correas: Sí Incluye cierre de fuelle: Sí Acordeón electrónico: No Cantidad de registros: 2 Origen: China",
+    "price": 196069,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Armónica Lee Oskar Diatónica Mayor",
+    "description": "Material de lenguetas: Cobre Espesor de lengueta: 0.9 mm Cantidad de lenguetas: 20 Material de peine: ABS, negro Acabado de peine: ABS Embocadura: ABS Cobertores: Acero inoxidable Tipo: Diatónica Cantidad de agujeros: 10 Rango tonal: 3 octavas Largo: 10.5 cm",
+    "price": 7533,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Armonica Suzuki 1072 Folkmaster",
+    "description": "Tipo de armónica: Diatónica Cantidad de agujeros: 10 Cantidad de octavas: 1 Cantidad de tonos: 20 10 Hole Diatonica",
+    "price": 1770,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Saxo Evolution Vintage Parquer",
+    "description": "Dureza de las cañas: 2 Incluye estuche: Sí Altura: 60 cm Tipo: Alto Acabado: Lacquer",
+    "price": 100770,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Saxo Coda Cts-110",
+    "description": "Dureza de las cañas: A elección Incluye estuche: Sí Altura: 83 cm Acabado: Dorado Tipo: Tenor",
+    "price": 110120,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Trompeta Bb Knight Jbtr300",
+    "description": "· Afinación en Si bemol (Bb) Construcción en latón amarillo Pistón de cuproníquel con niquelado Acabado en laca, níquel y plata Diámetro: 1.17 cm Diámetro de campana: 12.5 cm Estuche ultraliviano semirígido con dos trabas e interior forrado en pana Boquilla 7C",
+    "price": 28474,
+    "discount": 10 ,
+    "category":2,
+    "statusId": 1
+  },
+  {
+    "name": "Bateria Acústica Parquer ",
+    "description": "Shadow 5 Cpos Platos Fierros, Diámetro del bombo: 22 in Cantidad de piezas: 5 Edad: Adultos Modelo: 10070BK",
+    "price": 63680,
+    "discount": 10 ,
+    "category":3,
+    "statusId": 2
+  },
+  {
+    "name": "Tama Rm52kh4 Rhythm ",
+    "description": "Mate Bateria Kit Wrap, 5 Cuerpos 22x16 Bombo 10x7 & 12x8toms 16x15 tom de pie & 14x5 redoblante Incluye hardware HS03w pie de redoblante, hp10 pedal de bombo simple iron cobra, hh03w pie de  hat iron cobra, hc03w pie de platillo & mth50n doble tom holder.",
+    "price": 131013,
+    "discount": 10 ,
+    "category":3,
+    "statusId": 2
+  },
+  {
+    "name": "Pearl Roadshow Bateria  Platillos",
+    "description": "5 Cuerpos Bombo18X12 Tom 110X07 Tom 212X08 Tom Base 114X10 Caja13X05 Madera deHardwood Acabado HerrajesCromado Acabado CascoForrado Soporte Plato RectoINCLUIDO Soporte Hi HatINCLUIDO Soporte CajaINCLUIDO Pedal BomboINCLUIDO Soporte TomsINCLUIDO SillínIncluido Plato 1Hi Hat 14 Plato 2Crash 16 Color CascosNEGRO Configuración18 JAZZ Número de Piezas5 PIEZAS Bombo PerforadoSi",
+    "price": 132806,
+    "discount": 10 ,
+    "category":3,
+    "statusId": 2
+  },
+  {
+    "name": "Timbaleta Pintada Pyp o",
+    "description": "Tipo de timbal: Latino Diámetro: 13.14 Incluye cencerro musical: Sí Incluye platillos de percusión: Sí Incluye soporte: Sí C/ Pie Platillo Y Palill",
+    "price": 16500,
+    "discount": 10 ,
+    "category":3,
+    "statusId": 2
+  },
+  {
+    "name": "Timbaleta Acero",
+    "description": "Tipo de timbal: Latino Diámetro: 13.14 Incluye cencerro musical: Sí Incluye platillos de percusión: No Incluye soporte: Sí Altura: 1 m Pyp_percusion",
+    "price": 9300,
+    "discount": 10 ,
+    "category":3,
+    "statusId": 1
+  },
+  {
+    "name": "Teclado musical Gadnic T04",
+    "description": "Cantidad de teclas: 61 Cantidad de ritmos: 128 Con interfaz MIDI: Sí Tipos de alimentación: Corriente eléctrica Accesorios incluidos: Atril, Adaptador de CA Pantalla: LCD Efectos digitales: Vibrato, Dual, Sustain Terminales de entrada/salida: MIDI Con grabador: Sí Con respuesta al tacto: Sí Peso: 4.8 kg 220V",
+    "price": 20000,
+    "discount": 10 ,
+    "category":4,
+    "statusId": 1
+  },
+  {
+    "name": "Piano Vertical Acustico Kawai Nd-21",
+    "description": "Alto 121 cm Profundo: 58 cm Ancho: 150 cm Peso: 215 kg Mecanismo Ultra-Responsive Action TM Tapa armónica Picea Maciza Baraje 4 Clavijas Níquel plateado",
+    "price": 952275,
+    "discount": 10 ,
+    "category":4,
+    "statusId": 1
+  },
+  {
+    "name": "Sintetizador Behringer ",
+    "description": "Td-3 Bu Azul Analógico, Tipo: Sintetizador de graves de escritorio Almohadillas: 13 x botones clave Polifonía: Poly Chain monofónico de 16 voces Secuenciador: 16 pasos, 7 pistas, 250 patrones de usuario Efectos: Distorsión Entradas analógicas: 1 x 1/8 TS (entrada de filtro) Salidas Analógicas: 1 x 1/4 TS (salida de línea) Auriculares: 1 x 1/8  E / S MIDI: Entrada, Salida / A través, USB Otras E / S: CV out, Gate out, Sync in USB: 1 x tipo B Software: Aplicación Behringer Synth Tool Requisitos del sistema operativo - Mac: OS X 10.8.5 o posterior Requisitos del sistema operativo - PC: Windows 7 SP1 o posterior Fuente de alimentación: Fuente de alimentación de 9 V CC (incluida)",
+    "price": 22462,
+    "discount": 10 ,
+    "category":4,
+    "statusId": 1
+  },
+  {
+    "name": "Soporte Para Micrófono Profesional",
+    "description": "Condenser Tipo de soporte: Brazo jirafa Tipo de base: Morsa Material: Metal Altura mínima - Altura máxima: 35 cm - 70 cm Es soporte de mesa: No",
+    "price": 2199,
+    "discount": 10 ,
+    "category":5,
+    "statusId": 1
+  },
+  {
+    "name": "Pie Micrófono Venetian Ms15 B",
+    "description": "Tipo de soporte: Brazo jirafa Tipo de base: Trípode Material: Hierro Altura mínima - Altura máxima: 65 m - 1 m Es soporte de mesa: No",
+    "price": 2450,
+    "discount": 10 ,
+    "category":5,
+    "statusId": 1
+  },
+  {
+    "name": "Varilla Yamaha",
+    "description": "Varilla robusta de acero inoxidable para limpieza de instrumentos musicales y colocar los trapos de limpieza.",
+    "price": 997,
+    "discount": 10 ,
+    "category":7,
+    "statusId": 1
+  },
+  {
+    "name": "Combo Bafle + Micrófono ",
+    "description": "Combo Bafle Novik Evo-100a + Micrófono Shure Sv100, 1 BAFLE ACTIVO-POTENCIADO NOVIK EVO 100A 8/400W (SKU: 6000043) Bafle Potenciado que combina diseño con máxima potencia haciéndolo perfecto para adaptarse a cualquier situación de refuerzo de sonido en vivo  presentaciones musicales DJs entretenimiento y más.EVO series ofrece un completo Sistema de 3 Canales de Mezcla Reproductor MP3 Entradas de Micrófono y de Línea para las situaciones más sofisticadas.Características del Altavoz Potenciado de 2 vías de Rango Completo:- Conectividad Bluetooth®- Salida ¼”- USB/SD Reproductor Digital de Audio EQ Agudos/Graves: +-12dB 3 Canales de Mezcla Control General de Nivel Entrada de micrófono XLR y Plug ¼” LED de Pico Entradas de Línea XLR / RCA Potencia RMS: 100W - Potencia Programa: 200W - Potencia Pico: 400W Diámetro Woofer: 8” Driver de compresión: 1” de Titanio Respuesta en frecuencia: 65Hz – 18 KHz +-2dB Dispersión nominal: 90º x 60º Sensibilidad: 92dB a 1W/1m / Max. NPS: 118dB Manijas a los lados para su fácil transporte Alimentación: 110/220V ~ 60/50 Hz Dimensiones: (Ancho x Profundidad x Altura): 34.5 x 28 x 49 cm2 - MICRÓFONO SHURE SV-100 c/Cable XLR-Plug de 4.5mts - (SKU: 3201924)Micrófono SHURE SV100 Multipropósito Dinámico Unidireccional CardiodeInstrumentos Voz KaraokeCaracterísticas:- Ideal para presentaciones en Vivo multimedia Karaoke e Instrumentos.- Directividad: Unidireccional- Patrón Polar: Cardiode.**Ayuda a reducir el patrón de captación de información y la realimentación.- Respuesta en Frecuencia: plana de alto rendimiento- Calidad se Sonido: Excelente.- Soporte amortiguado interno para reducir el ruido de manejo.- Construcción de metal resistente.- Switch de Encendido / Apagado para control sobre el escenario.- Malla de acero templado que resiste el desgaste y el abuso.- Filtro pop integrado**Reduce los sonidos explosivos de la respiración y el ruido del viento.- Respuesta en Frecuencia: 50 a 15000 Hz- lmpedancia: 600 Ohms- Conexión de salida -52 dBV/Pa a 1 KHz - 1 Pa = 94 dB SPL.3 - Cable de Micrófono Profesional SHURE- Cable XLR (Canon) a Plug 1/4 (6.35mm).- Longitud del Cable: 4.5mts- Bajo Ruido- Libre de Interferencias4 - Trípode Soporte de Bafle Profesional SKP STD-3 de Acero - (SKU: 3300329)- Excelente rendimiento de Configuración Rápida y Fácil- Construcción de Acero Fuerte y Duradera- Regulación de Altura: 1100 - 1870mm- Capacidad de carga: 60kg- Peso: 3.45kg- Tubo del eje superior: 35mm- Color: Negro- Material: Acero",
+    "price": 38449,
+    "discount": 10 ,
+    "category":7,
+    "statusId": 1
+  },
+  {
+    "name": "Escudo Acustico Ws05",
+    "description": "- Pantalla acústica portátil para micrófonos de 5 lados.- Elimina interferencias: el material de absorción acústica reduce notablemente la reflexión del sonido.- Gran flexibilidad: elegante diseño que permite el ajuste del ángulo de los paneles para un óptimo aislamiento.- Pude ser colocado sobre una mesa o escritorio, o montado sobre un pie de mic. otorgando gran versatilidad.- Cinco paneles plásticos ajustables y plegables con foam de absorción en el interior.- Construcción compacta y de bajo peso que permite un fácil traslado.- Ideales para home studio, discursos y todo tipo de grabaciones que requieran una alta calidad de sonido.- Material Plástico con paneles de espuma de polyester.- Color Negro.- Dimensiones 331mm X 212mm cada panel.-- 59119",
+    "price": 10560,
+    "discount": 10 ,
+    "category":6,
+    "statusId": 1
+  },
+  {
+    "name": "Puas Pack Por 10 ",
+    "description": "Calibres Varios Guitarra Ukelele, Material: Celuloide Espesor: 0.46mm, 0.71mm y 0.81mmColores: Surtidos.Marca: Alice.",
+    "price": 390,
+    "discount": 10 ,
+    "category":7,
+    "statusId": 1
+  },
+  {
+    "name": "5 Puas Stagg 0,81 Mm",
+    "description": "Espesor: 0,81 mm. Fabricada con celuloide de excelente calidad.",
+    "price": 150,
+    "discount": 10 ,
+    "category":7,
+    "statusId": 1
+  },
+  {
+    "name": "Consola Sonido Onaxpro Pod4 ",
+    "description": "Tipo de consola: Analogica + USB Tipos de alimentación: USB Con alimentación fantasma: Sí Con efectos: Sí Conectores: XLR,PLUG 3,5mm PARA AURICULARES Cantidad de canales: 4",
+    "price": 7490,
+    "discount": 10 ,
+    "category":6,
+    "statusId": 1
+  },
+  {
+    "name": "Presonus Eris E3.5 ",
+    "description": "Monitores Estudio Alta Definición, Componentes y construcción - Transductor para frecuencias graves de Kevlar® de 3.5” (89 mm) - Transductor para frecuencias graves de domo de seda de masa ultra baja de 1” (25 mm) - Puerto acústico de emisión frontal para una reproducción superior de frecuencias graves - Refuerzos internos optimizados para supresión de resonancias Controles de usuario - Ajuste del driver de frecuencias altas y bajas - Control de volumen en el panel frontal Alimentación y seguridad - Biamplifcación Clase AB de 50 watts - Protección contra interferencias por radio frecuencias, limitación de corriente de salida, exceso de temperatura, transientes y subsónicos - Característica de “arranque suave” que elimina el popping al encender - Fuente poder interna con conector IEC - Interruptor de encendido con LED seleccionable. Entradas y salidas - TRS balanceadas de ¼” - No balanceadas de 1/8” TS - Entradas RCA - Salida de audífonos estéreo de 1/8” Especificaciones Técnicas: Entradas 1- Estéreo 1/8 2- TRS ¼” balanceadas 2- RCA no balanceadas Desempeño - Respuesta de frecuencia: 80 Hz - 20 kHz - Frecuencia de crossover: 2.8 kHz - Potencia de amplificación de frecuencias agudas: 25W/sistema completo - Potencia de amplificación de frecuencias graves: (no bi-amplificado) - Nivel máximo de presión sonora (@ 1 metro): 100 dB - Driver de frecuencias graves: 3.5 Kevlar® - Driver de frecuencias agudas: 1” domo de seda - Impedancia de entrada: 10k Ohms Controles de usuario - Rango de volumen: Ahusamiento tipo A - Control de frecuencias medias: Variable (-6 a +6 dB) - Control de frecuencias agudas: Variable (-6 a +6 dB) Protección - Interferencia a Frecuencias Radiales - Limitación de corriente de salida - Sobrecalentamiento - Encendido/apagado de transientes - Filtro subsónico - Fusible de fuentes principales externas Consumo eléctrico - 100-120V ~50/60 Hz o 220-240V ~50/60 Hz Gabinete - Laminado en vinilo, fibra de densidad media Dimensiones físicas - Ancho: 5.6 (141 mm) - Profundidad: 6.4 (162 mm) - Altura: 8.3 (210 mm) - Peso: 2.9 kg",
+    "price": 25000,
+    "discount": 10 ,
+    "category":6,
+    "statusId": 1
+  },
+  {
+    "name": "Interface de audio Focusrite ",
+    "description": "Scarlett Solo 3.ºra gen, Cantidad de entradas: 2 Cantidad de salidas: 2 Tasa de muestreo: 192 kHz Resolución de audio: 24 bit Con alimentación fantasma: Sí Tipos de alimentación: USB Tipos de conexiones: 1 XLR, 1 phone TRS 6.3 mm, 1 line TRS-TS L/R 6.3 mm out, 1 USB-C 2.0 Software compatible: Live lite, Pro tools first, Garageband, Auria pro, FL studio Altura: 43.5 mm Ancho: 143.5 mm Profundidad: 95.8 mm Peso: 320 g",
+    "price": 29822,
+    "discount": 10 ,
+    "category":6,
+    "statusId": 1
+  },
+  {
+    "name": "Panel Acústico Difusor 50x50x3 Cm.",
+    "description": "Espesor: 3 cm Función del panel acústico: fonoabsorbente,Aislante,rompe la energia del sonido Material: Poliuretano Densidad del panel acústico: 18 kg/m³ Ignífugo: No Ancho y largo: 40cm",
+    "price": 29822,
+    "discount": 10 ,
+    "category":6,
+    "statusId": 1
+  }
+]

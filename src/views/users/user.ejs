@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/headBootstrap') %>
+
+    <body class="user">
+        <%- include('../partials/sidebar') %>
+            <main>
+                <div class="mb-5 ">
+                    <form class="form" action="/users/profile/<%= locals.userLogin.id %>?_method=PUT" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="container">
+                            <div class="container p-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Datos personales</h5>
+                                        <div class="form-group">
+                                            <label for="name">Nombre</label>
+                                            <input type="text" class="form-control" id="firstName" name="firstName"
+                                                value="<%- user.firstName %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastname">Apellido</label>
+                                            <input type="text" class="form-control" id="lastname" name="lastName"
+                                                value="<%- user.lastName %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="userName">Nombre de usuario</label>
+                                            <input type="text" class="form-control" id="userName" name="userName"
+                                                value="<%- user.userName %>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                value="<%- user.email %>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="number">Numero</label>
+                                            <input type="number" class="form-control" id="number" name="number"
+                                                value="<%- user.number %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Password">Contraseña</label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newPassword">Nueva Contraseña</label>
+                                            <input type="password" class="form-control" id="newPassword"
+                                                name="newPassword">
+                                        </div>
+                                        <div class="form-group">
+                                            <div id="img-preview">
+                                            <img class="img-circle block" 
+                                                alt="avatar" width="20%" src="/images/fotoUser/<%- user.avatar %>">
+                                            </div>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="validatedCustomFile"
+                                                name="avatar" onchange="readURL(this)">
+                                            <label class="custom-file-label" for="validatedCustomFile">Seleccione
+                                                avatar</label>
+                                        </div>
+                                        <!--  <div class="form-group">
+                                        
+                                        <label class="img-perfil " for="avatar">Imagen De Perfil</label>
+                                        <input class="img-input" type="file" name="avatar" id="avatar">
+                                    </div> -->
+                                        <button type="submit" class="button">Editar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <div class="container mb-5">
+                    <!-- Table -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mis Productos</h5>
+                                    <table class="table container responsive">
+                                        <thead class="container responsive">
+                                            <tr>
+                                                <th scope="col" class="p-1">#</th>
+                                                <th scope="col" class="p-1">Imagen</th>
+                                                <th scope="col" class="p-1">Producto</th>
+                                                <th scope="col" class="p-1">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% products.forEach(product=> { %>
+                                                <tr role="  ">
+                                                    <th class="p-1" scope="row">
+                                                        <%= product.id %>
+                                                    </th>
+
+                                                    <td role="cell" class="td_img p-1"><img
+                                                            src="/images/articulos/<%= product.images.length != 0 ? product.images[0].image : null %>"
+                                                            alt="producto"></td>
+                                                    <td role="cell" class="p-1">
+                                                        <%= product.name %>
+                                                    </td>
+                                                    <td role="cell" class="oculto p-1">$ <%= product.price %>
+                                                    </td>
+                                                    <td role="cell" class="oculto p-1">
+                                                        <%= product.productStates.state %>
+                                                    </td>
+                                                    <td role="cell" class="td_botton p-1">
+                                                        <button><a href="/users/edit/<%= product.id %>"><i
+                                                                    class="fas fa-edit"></i></a></button>
+                                                        <button id="openDelete"><i
+                                                                class="fas fa-trash"></i></button>
+                                                        <div id="modal_delete" class="modal-delete">
+                                                            <div class="model">
+                                                                <form
+                                                                    action="/users/delete/<%= product.id %>?_method=DELETE"
+                                                                    method="POST">
+                                                                    <div class="container mt-4">
+                                                                        <h1>Estas seguro que deseas eliminar este producto?
+                                                                        </h1>
+                                                                        <button class="submitDelete button" type='submit'>Si</button>
+                                                                    </div>
+                                                                </form>
+                                                                <button class="closeDelete button"
+                                                                    id="closeDelete">No</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('../partials/footer') %>
+                <script src="/js/user.js"></script>
+    </body>
+
+</html>

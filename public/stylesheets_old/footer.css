@@ -1,0 +1,103 @@
+footer{
+    background-color: #000;
+    padding: 5px 0; 
+    height: 90vh;
+}
+footer a{
+    font-size: 11px;
+    color: #fff;
+    transition: color .3s;
+    padding: 5px 10px;
+}
+footer a:hover{
+    color: var(--color-a-fav);
+}
+footer .div_grid{
+    display:grid;
+    grid-template-rows: auto auto 50px;
+    height: 60%;
+    border: 1px solid #fff;
+    margin: 1px;
+}
+footer .div_grid .div_navegacion_footer ul{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    text-align: center;
+    align-content: space-around;
+    height: 100%
+}
+
+footer .div_grid .div_contacto{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    align-self: center;
+}
+
+footer .div_grid .div_redes{ 
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    text-align: center;
+}
+footer .div_grid2,
+footer .div_grid2 .div_terminos{
+    height: 40%;
+}
+footer .div_grid2 .div_terminos ul{
+    height: 49vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    text-align: center;
+}
+footer .div_grid2 .div_terminos ul li{
+    border: 1px solid #fff;
+    width: 45vw;
+}
+.login footer{
+  /*  position: fixed;*/
+    width: 100%;
+    bottom: 0;
+}
+
+@media (min-width:425px){
+    footer a{
+        font-size: 16px;
+    }/* 
+    header .i_sidebar #btn2{
+        font-size: 20px;
+    } */
+    footer{
+        height: 50vh;
+    }
+    footer .div_grid{
+        height: 25vh;
+    }
+    footer .div_grid2{
+        height: 25vh;
+    }
+    footer .div_grid2 li{
+        height: 8vh;
+        display: flex;
+        align-items: center;
+        place-content: center;
+    }
+    footer .div_grid2 .div_terminos{
+        height: 100%;
+    }
+    footer .div_grid2 .div_terminos ul{
+        height: 100%;
+    }
+    footer a{
+        font-size: 22px;
+    }
+}
+@media (min-width:769px){
+    header .i_sidebar #btn2{
+        font-size: 25px;
+    }
+}
+
