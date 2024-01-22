@@ -3,65 +3,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani&display=swap");
+
 /* font-family: 'Rajdhani', sans-serif; */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: var(--font-family); }
+  font-family: var(--font-family);
+}
 
 li {
-  list-style: none; }
+  list-style: none;
+}
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 textarea {
-  resize: none !important; }
+  resize: none !important;
+}
 
-.button {
-  background-color: #ebebeb;
-  border: 0;
-  border-radius: 7px;
-  font-size: 10px;
-  padding: 8px 20px;
-  color: #4f4f4f;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  border: 1px solid #000;
-  margin: 15px; }
-
-@media (min-width: 425px) {
-  .button {
-    font-size: 14px;
-    padding: 10px 25px;
-    border: 1px solid #000; } }
 
 body {
-/*   background-image: url(https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80);
- */  background-attachment: fixed;
-  /* Fija la imagen de fondo */
-  background-position: center;
-  /* Fija la imagen de fondo */
-  background-size: 100vw;
-  /* Fija la imagen de fondo */
-  max-height: 715px;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  right: 0; }
+  background-color: #ffe7de;
+}
 
 main {
-  margin-top: 10vh; }
-
-.loader {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background: url("/images/background.gif") 50% 50% no-repeat rgba(255, 255, 255, 0.7); }
+  margin-top: 10vh;
+}
 
 :root {
   --color-background: ##f8f9fa;
@@ -78,4 +48,5 @@ main {
   --color-art-precio: #ebebeb;
   --color-h1-rgba: #474a5680;
   --color-a-fav: #ff4500;
-  --font-family: 'Rajdhani', sans-serif; }
+  --font-family: 'Rajdhani', sans-serif;
+}
