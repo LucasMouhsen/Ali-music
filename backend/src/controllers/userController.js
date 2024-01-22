@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');8
+const { validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs")
 const db = require('../database/models');
 const { Op } = require('sequelize');
@@ -21,7 +21,7 @@ module.exports = {
             // Enviar la respuesta con el perfil del usuario y la lista de productos
             res.json({
                 title: req.session.userLogin.firstName + ' ' + req.session.userLogin.lastName,
-                user:{
+                user: {
                     userName: user.userName,
                     firstName: user.firstName,
                     lastName: user.lastName,
@@ -86,103 +86,10 @@ module.exports = {
                 )
             })
     },
-    /* profile: (req, res) => {
-        let user = db.User.findByPk(req.session.userLogin.id)
-        let products = db.Product.findAll({
-            include: ['images', 'productStates'],
-            where: {
-                userId: req.session.userLogin.id
-            }
-        })
-        Promise.all([user, products])
-            .then(([user, products]) => {
-                res.render('users/user', {
-                    title: req.session.userLogin.firstName,
-                    user,
-                    products
-                })
-            })
-
-
-    },
-    login: (req, res) => res.render('users/login', {
-        title: 'login'
-    }),
-    processLogin: (req, res) => {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            const { email, recordar } = req.body
-            db.User.findOne({
-                where: {
-                    email
-                }
-            })
-                .then(user => {
-                    req.session.userLogin = {
-                        id: user.id,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        avatar: user.avatar,
-                        rol: user.rol
-                    }
-                    if (recordar) {
-                        res.cookie("recordarme", req.session.userLogin, { maxAge: 1000 * 60 })
-                    }
-                    return res.redirect('/')
-                })
-                .catch(error => console.log(error))
-
-        } else {
-            return res.render('users/login', {
-                title: 'Login',
-                errors: errors.mapped()
-            })
-        }
-
-    },
-    register: (req, res) => {
-        res.render('users/register', {
-            title: 'register'
-        })
-    },
-    proccesRegister: (req, res) => {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-
-            const { userName, firstName, lastName, email, password } = req.body
-            db.User.create({
-                userName: userName.trim(),
-                firstName: firstName.trim(),
-                lastName: lastName.trim(),
-                email: email.trim(),
-                number: null,
-                password: bcrypt.hashSync(password.trim(), 10),
-                rol: 2,
-                avatar: req.file ? req.file.filename : 'avatar_default.png',
-            })
-                .then(user => {
-                    req.session.userLogin = {
-                        id: user.id,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        avatar: user.avatar,
-                        rol: user.rol
-                    }
-                    return res.redirect('/')
-                })
-                .catch(error => console.log(error))
-        } else {
-            return res.render('users/register', {
-                title: 'Register',
-                errors: errors.mapped(),
-                old: req.body
-            })
-        }
-    }, */
     logout: (req, res) => {
         req.session.destroy();
         res.cookie("recordarme", null, { MaxAge: -1 });
-        res.send({
+        res.json({
             status: "usuario deslogeado"
         })
     },
@@ -191,7 +98,11 @@ module.exports = {
             title: 'fav'
         })
     },
-    profileEdit: (req, res) => {
+    usersApiProfileUpdate: (req, res) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
         const pass = res.locals.userLogin.password
         const { firstName, lastName, number, password, newPassword, avatar } = req.body
         console.log(req.body)
@@ -200,7 +111,7 @@ module.exports = {
                 firstName: firstName.trim(),
                 lastName: lastName.trim(),
                 number: number ? number : null,
-                password: newPassword != "" && password != "" ? bcrypt.hashSync(newPassword.trim(), 10) : pass,
+                password: newPassword != "" && password != "" ? bcrypt.hashSync(newPassword.trim(), 10) : password,
                 avatar: req.file ? req.file.filename : avatar
             },
             {
@@ -219,7 +130,9 @@ module.exports = {
                 console.log(res.locals.userLogin);
             })
             .catch(error => console.log(error))
-        return res.redirect('/users/profile/' + req.session.userLogin.id)
+        res.json({
+            status: "usuario actualizado"
+        })
     },
     add: (req, res) => {
         db.Category.findAll({
