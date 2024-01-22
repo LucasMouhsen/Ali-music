@@ -4,7 +4,7 @@ var router = express.Router();
 const multer = require('multer');
 const path = require('path')
 
-var {profile, profileEdit, login, register,proccesRegister ,fav, processLogin, logout, add, store, edit, update, destroy} = require('../controllers/userController')
+var {profile, profileEdit, login, register,proccesRegister ,fav, processLogin, logout, add, store, edit, update, destroy, usersApiLogin, usersApiRegister, usersApiProfile} = require('../controllers/userController')
 
 const uploadUser = require('../middleware/fotoUserMulter')
 const uploadProduct = require('../middleware/fotoProductMulter')
@@ -37,6 +37,9 @@ router.delete('/delete/:id', loginCheck, destroy);
 
 router.get('fav', loginCheck, fav);
 
+router.post('/usersApiLogin',loginValidation, usersApiLogin);
+router.post('/usersApiRegister',registerValidation, usersApiRegister);
+router.get('/usersApiProfile/:id', usersApiProfile);
 
 module.exports = router;
 

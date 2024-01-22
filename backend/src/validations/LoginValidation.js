@@ -15,24 +15,24 @@ module.exports = [
         })
             .then(user => {
                 if(!user){
-                    return Promise.reject()
+                    return Promise.resolve()
                 }
             }).catch( () => Promise.reject('Credenciales inválidas'))
     }),
     
     check('password')
     .notEmpty().withMessage('El campo de contraseña no puede estar vacío')
-    .custom((value,{req}) => {
-        
+    .custom((value, { req }) => {
         return db.User.findOne({
-            where : {
-                email : req.body.email,
+            where: {
+                email: req.body.email,  // Accede a req.body en lugar de req.query
             }
         })
             .then(User => {
-                if(!bcrypt.compareSync(req.body.password, User.password)){
-                    return Promise.reject()
+                if (!bcrypt.compareSync(value, User.password)) {  // Usar el valor pasado al middleware
+                    return Promise.reject('Credenciales inválidas');  // Simplifica el mensaje de error
                 }
-            }).catch( () => Promise.reject('Credenciales inválidas'))
+            }).catch(() => Promise.reject('Credenciales inválidas'));
     })
+
 ]

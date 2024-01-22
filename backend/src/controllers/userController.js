@@ -1,15 +1,92 @@
-const { validationResult } = require('express-validator');
-const fs = require("fs");
-const path = require("path");
+const { validationResult } = require('express-validator');8
 const bcrypt = require("bcryptjs")
-
-/* const users = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'users.json'),'utf-8'));
-const saveUser = dato =>fs.writeFileSync(path.join(__dirname, '..', 'data', 'users.json'),JSON.stringify(users,null,2),'utf-8'); */
-const db = require('../database/models')
+const db = require('../database/models');
+const { Op } = require('sequelize');
 const queryInterface = db.sequelize.getQueryInterface();
 
 module.exports = {
-    profile: (req, res) => {
+    usersApiProfile: async (req, res) => {
+        try {
+            // Obtener el usuario por su clave primaria (id)
+            const user = await db.User.findByPk(req.session.userLogin.id);
+
+            // Obtener la lista de productos asociados al usuario
+            const products = await db.Product.findAll({
+                include: ['images', 'productStates'],
+                where: {
+                    userId: req.session.userLogin.id
+                }
+            });
+
+            // Enviar la respuesta con el perfil del usuario y la lista de productos
+            res.json({
+                title: req.session.userLogin.firstName + ' ' + req.session.userLogin.lastName,
+                user:{
+                    userName: user.userName,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    number: user.number,
+                    avatar: user.avatar
+                },
+                products
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Error al obtener el perfil del usuario' });
+        }
+    },
+    usersApiLogin: async (req, res) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const { email } = req.body
+        const options = {
+            where: {
+                email: email,
+            }
+        };
+        const user = await db.User.findOne(options);
+        return res.json(
+            req.session.userLogin = {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                avatar: user.avatar,
+                rol: user.rol
+            }
+        )
+    },
+    usersApiRegister: async (req, res) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const { userName, firstName, lastName, email, password } = req.body
+        await db.User.create({
+            userName: userName.trim(),
+            firstName: firstName.trim().toLowerCase(),
+            lastName: lastName.trim().toLowerCase(),
+            email: email.trim().toLowerCase(),
+            number: null,
+            password: bcrypt.hashSync(password.trim(), 10),
+            rol: 2,
+            avatar: req.file ? req.file.filename : 'avatar_default.png',
+        })
+            .then((user) => {
+                return res.json(
+                    req.session.userLogin = {
+                        id: user.id,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        avatar: user.avatar,
+                        rol: user.rol
+                    }
+                )
+            })
+    },
+    /* profile: (req, res) => {
         let user = db.User.findByPk(req.session.userLogin.id)
         let products = db.Product.findAll({
             include: ['images', 'productStates'],
@@ -33,8 +110,6 @@ module.exports = {
     }),
     processLogin: (req, res) => {
         let errors = validationResult(req);
-        /* console.log(req.body);
-        console.log(errors) */
         if (errors.isEmpty()) {
             const { email, recordar } = req.body
             db.User.findOne({
@@ -50,7 +125,6 @@ module.exports = {
                         avatar: user.avatar,
                         rol: user.rol
                     }
-                    console.log(req.session.userLogin)
                     if (recordar) {
                         res.cookie("recordarme", req.session.userLogin, { maxAge: 1000 * 60 })
                     }
@@ -104,11 +178,13 @@ module.exports = {
                 old: req.body
             })
         }
-    },
+    }, */
     logout: (req, res) => {
         req.session.destroy();
         res.cookie("recordarme", null, { MaxAge: -1 });
-        res.redirect('/')
+        res.send({
+            status: "usuario deslogeado"
+        })
     },
     fav: (req, res) => {
         res.render('users/fav', {
