@@ -3,7 +3,6 @@ const {getMails, orderPriceDesc, orderPrice, filterPrice, allProducts,filterPric
 const { products } = require('../controllers/productsController')
 
 /* /api */
-router.get('/products',products)
 
 router.get('/emails',getMails)
 router.get('/orderPriceDesc',orderPriceDesc)
