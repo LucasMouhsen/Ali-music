@@ -41,7 +41,7 @@ router.get('fav', loginCheck, fav);
 router.post('/usersApiLogin',loginValidation, usersApiLogin);
 router.post('/usersApiRegister',registerValidation, usersApiRegister);
 
-router.get('/usersApiProfile/:id', usersApiProfile);
+router.get('/usersApiProfile', usersApiProfile);
 router.post('/usersApiProfileUpdate', editUserValidation, usersApiProfileUpdate);
 
 module.exports = router;
