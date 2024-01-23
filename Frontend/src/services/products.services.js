@@ -5,8 +5,6 @@ export async function productsService() {
 
   try {
     const response = await axios.get(url);
-
-    // Axios automáticamente arrojará un error para respuestas no exitosas (códigos de estado no 2xx)
     const data = response.data;
 
     return data;

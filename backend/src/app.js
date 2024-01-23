@@ -13,11 +13,9 @@ const localUser = require('./middleware/localUser');
 //middlewares
 const recordame = require('./middleware/cookie');
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var comunityRouter = require('./routes/comunity');
-var adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -53,11 +51,9 @@ app.use(recordame);
 app.use(localUser);
 // Rutas
 
-app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/comunity', comunityRouter);
-app.use('/api/admin', adminRouter);
 
 
 // catch 404 and forward to error handler
