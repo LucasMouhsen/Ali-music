@@ -60,17 +60,19 @@ module.exports = {
                     statusId: status
                 }
             ).then(product => {
-                if (req.files.length != 0) {
-                    let images = req.files.map(image => {
-                        let item = {
-                            image: image.filename,
-                            productId: product.id
-                        }
-                        return item
-                    })
-                    db.ImageProduct.bulkCreate(images, { validate: true })
-                        .then(() => console.log('imagenes guardadas satisfactoriamente'))
+
+                if (req.files.length == 0) {
+                    return res.json('Debes enviar una imagen')
                 }
+                let images = req.files.map(image => {
+                    let item = {
+                        image: image.filename,
+                        productId: product.id
+                    }
+                    return item
+                })
+                db.ImageProduct.bulkCreate(images, { validate: true })
+                    .then(() => console.log('imagenes guardadas satisfactoriamente'))
                 return res.json('Producto creado')
             })
                 .catch(error => console.error(error))
@@ -98,11 +100,11 @@ module.exports = {
                 if (!updatedProduct) {
                     return res.status(404).json('Producto no encontrado');
                 }
-    
+
                 if (updatedProduct.userId !== req.session.userLogin.id) {
                     return res.status(403).json('Usted no es el propietario de este producto');
                 }
-    
+
                 db.ImageProduct.findByPk(req.params.id, {
                     include: ['product']
                 })
@@ -129,7 +131,7 @@ module.exports = {
         } else {
             return res.status(400).json(errors.array());
         }
-    },    
+    },
     deleteProduct: (req, res) => {
         db.Product.findByPk(req.params.id, {
             include: ['images']
@@ -139,7 +141,7 @@ module.exports = {
                 if (!product) {
                     return res.status(404).json('Producto no encontrado');
                 }
-    
+
                 if (product.userId !== req.session.userLogin.id) {
                     return res.status(403).json('Usted no es el propietario de este producto');
                 }
