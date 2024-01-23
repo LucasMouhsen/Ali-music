@@ -2,7 +2,6 @@ const { validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs")
 const db = require('../database/models');
 const { Op } = require('sequelize');
-const queryInterface = db.sequelize.getQueryInterface();
 
 module.exports = {
     usersApiProfile: async (req, res) => {
