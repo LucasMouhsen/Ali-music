@@ -33,8 +33,3 @@ module.exports = [
         return false
     }).withMessage("Las contraseñas deben coincidir")
 ]
-/* if (!regExPass.test.password) {
-            return Promise.reject('NO ES VALIDO')
-        }else{
-            Promise.resolve()
-        } */
