@@ -2,12 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 const multer = require('multer');
-const path = require('path')
-
-var {fav, logout, destroy, usersApiLogin, usersApiRegister, usersApiProfile, usersApiProfileUpdate} = require('../controllers/userController')
+var { login, logout, register, profileUpdate } = require('../controllers/userController')
 
 const uploadUser = require('../middleware/fotoUserMulter')
-const uploadProduct = require('../middleware/fotoProductMulter')
 
 /* VALIDACION DE LOGIN */
 const loginCheck = require("../middleware/loginCheck");
@@ -17,23 +14,18 @@ const registerValidation = require("../validations/registerValidation")
 const loginValidation = require('../validations/loginValidation');
 /* VALIDACION DE EDIT */
 const editUserValidation = require('../validations/editUserValidation');
-
-
-
-router.delete('/delete/:id', loginCheck, destroy);
-
-router.get('fav', loginCheck, fav);
+const { profile } = require('console');
 
 /* login */
-router.post('/login',loginValidation, usersApiLogin);
+router.post('/login',loginValidation, login);
 /* logout */
 router.get('/logout', loginCheck, logout);
 /* register */
-router.post('/register', uploadUser.single('avatar'), registerValidation, usersApiRegister);
+router.post('/register', uploadUser.single('avatar'), registerValidation, register)
 /* profile */
-router.get('/profile', loginCheck ,usersApiProfile);
+router.get('/profile', loginCheck ,profile);
 /* update */
-router.post('/profileUpdate', loginCheck, uploadUser.single('avatar'), editUserValidation, usersApiProfileUpdate);
+router.post('/profileUpdate', loginCheck, uploadUser.single('avatar'), editUserValidation, profileUpdate);
 
 
 module.exports = router;
