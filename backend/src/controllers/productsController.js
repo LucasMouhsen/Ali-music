@@ -4,7 +4,8 @@
 const capitalizarPrimeraLetra = require("../utils/capitalizeOneLetter.js")
 const db = require('../database/models');
 const { Op } = require("sequelize");
-const { validationResult } = require("express-validator");
+const { validationResult, body } = require("express-validator");
+const queryInterface = db.sequelize.getQueryInterface();
 
 module.exports = {
     products: async (req, res) => {
@@ -44,14 +45,13 @@ module.exports = {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
             const { name, price, discount, category, description } = req.body
-            
             const status = 1
             db.Product.create(
                 {
                     name: name.trim(),
                     description: description.trim(),
-                    price,
-                    discount,
+                    price: +price,
+                    discount: +discount,
                     fav: 0,
                     sold: 0,
                     cart: 0,
@@ -73,7 +73,7 @@ module.exports = {
                 }
                 return res.json('Producto creado')
             })
-                .catch(error => console.log(error))
+                .catch(error => console.error(error))
         } else {
             return res.status(400).json({ errors: errors.array() });
         }
@@ -93,59 +93,56 @@ module.exports = {
                 {
                     where: { id: req.params.id }
                 }
-            ).then(() => {
+            ).then(async () => {
+                const updatedProduct = await db.Product.findByPk(req.params.id);
+                if (!updatedProduct) {
+                    return res.status(404).json('Producto no encontrado');
+                }
+    
+                if (updatedProduct.userId !== req.session.userLogin.id) {
+                    return res.status(403).json('Usted no es el propietario de este producto');
+                }
+    
                 db.ImageProduct.findByPk(req.params.id, {
                     include: ['product']
                 })
                     .then(async () => {
-                        if (req.files.length != 0) {
+                        if (req.files.length !== 0) {
                             let images = req.files.map(image => {
                                 let item = {
                                     image: image.filename,
                                     productId: req.params.id
                                 }
                                 return item
-                            })
+                            });
                             await queryInterface.bulkDelete('imageproducts', {
                                 productId: req.params.id
                             });
                             db.ImageProduct.bulkCreate(images, { validate: true, updateOnDuplicate: ["productId"] })
-                                .then(() => console.log('imagenes guardadas satisfactoriamente'))
+                                .then(() => console.log('Imágenes guardadas satisfactoriamente'))
+                                .catch(error => console.error(error));
                         }
-                        return res.redirect('/users/profile/' + req.session.userLogin.id)
+                        return res.json('Producto actualizado');
                     })
-                    .catch(error => console.log(error))
-            })
+                    .catch(error => console.error(error));
+            });
         } else {
-            let product = db.Product.findByPk(req.params.id, {
-                include: ['images', 'productStates', 'category']
-            })
-
-            let categories = db.Category.findAll({
-                order: [["id", "ASC"]]
-            })
-
-            Promise.all([categories, product])
-
-                .then(([categories, product]) => {
-                    res.render('users/edit', {
-                        title: 'Edit product',
-                        product,
-                        categories,
-                        old: req.body,
-                        errors: errors.mapped()
-                    })
-                })
-                .catch(err => { console.log(err) })
+            return res.status(400).json(errors.array());
         }
-
-
-    },
+    },    
     deleteProduct: (req, res) => {
         db.Product.findByPk(req.params.id, {
             include: ['images']
         })
-            .then(() => {
+            .then((product) => {
+                console.log(product);
+                if (!product) {
+                    return res.status(404).json('Producto no encontrado');
+                }
+    
+                if (product.userId !== req.session.userLogin.id) {
+                    return res.status(403).json('Usted no es el propietario de este producto');
+                }
                 db.ImageProduct.destroy({
                     where: {
                         productId: +req.params.id
@@ -156,7 +153,7 @@ module.exports = {
                         id: +req.params.id
                     }
                 })
-                return res.redirect('/users/profile/' + req.session.userLogin.id)
+                return res.json('Producto eliminado');
             })
 
 
