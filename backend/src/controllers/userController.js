@@ -1,22 +1,44 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs")
 const db = require('../database/models');
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
+
 module.exports = {
     profile: async (req, res) => {
+        const authorization = req.get('authorization')
+        let token = null
+
+        if (authorization && authorization.trim().toLowerCase().startsWith('bearer')) {
+            token = authorization.substring(7);
+        }
+        console.log(token);
+        let decodeToken = {}
+        try {
+            decodeToken = await jwt.verify(token, process.env.SECRET);
+        } catch (error) {
+            console.error(error);
+        }
+        
+        console.log('decodeToken', decodeToken);
+        if (!token || !decodeToken.id) {
+            return res.status(401).json({ error: 'Token invalido o no encontrado' })
+        }
         try {
             // Obtener el usuario por su clave primaria (id)
-            const user = await db.User.findByPk(req.session.userLogin.id);
+            const user = await db.User.findByPk(decodeToken.id);
 
             // Enviar la respuesta con el perfil del usuario y la lista de productos
             res.json({
-                title: req.session.userLogin.firstName + ' ' + req.session.userLogin.lastName,
+                title: user.firstName + ' ' + user.lastName,
                 user: {
                     userName: user.userName,
                     firstName: user.firstName,
                     lastName: user.lastName,
                     email: user.email,
                     number: user.number,
-                    avatar: user.avatar
+                    avatar: user.avatar,
+                    rol: user.rol
                 }
             });
         } catch (error) {
@@ -36,13 +58,20 @@ module.exports = {
             }
         };
         const user = await db.User.findOne(options);
-        return res.json(
+        const userLogin = {
+            id: user.id,
+        }
+
+        const token = jwt.sign(userLogin, process.env.SECRET)
+
+        return res.status(200).json(
             req.session.userLogin = {
                 id: user.id,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 avatar: user.avatar,
-                rol: user.rol
+                rol: user.rol,
+                token
             }
         )
     },

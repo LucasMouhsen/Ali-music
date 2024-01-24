@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const multer = require('multer');
-var { login, logout, register, profileUpdate } = require('../controllers/userController')
+var { login, logout, register, profileUpdate, profile } = require('../controllers/userController')
 
 const uploadUser = require('../middleware/fotoUserMulter')
 
@@ -14,8 +14,6 @@ const registerValidation = require("../validations/registerValidation")
 const loginValidation = require('../validations/loginValidation');
 /* VALIDACION DE EDIT */
 const editUserValidation = require('../validations/editUserValidation');
-const { profile } = require('console');
-
 /* login */
 router.post('/login',loginValidation, login);
 /* logout */
@@ -23,7 +21,7 @@ router.get('/logout', loginCheck, logout);
 /* register */
 router.post('/register', uploadUser.single('avatar'), registerValidation, register)
 /* profile */
-router.get('/profile', loginCheck ,profile);
+router.get('/profile', loginCheck, profile);
 /* update */
 router.post('/profileUpdate', loginCheck, uploadUser.single('avatar'), editUserValidation, profileUpdate);
 

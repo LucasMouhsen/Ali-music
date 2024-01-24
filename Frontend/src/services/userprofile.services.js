@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-export async function userProfile() {
+export async function userProfile(token) {
   const url = 'http://localhost:3000/api/users/profile';
 
   try {
-    const response = await axios.get(url, { withCredentials: true });
+    // Make a request for a user with a given token.
+    const response = await axios(url,{headers: { Authorization: `Bearer ${token}` } });
+    /* const response = await axios.get(url, { withCredentials: true }); */
     const responseData = response.data;
 
     return responseData;
@@ -14,7 +16,7 @@ export async function userProfile() {
   }
 }
 
-userProfile()
+userProfile('')
   .then((response)=> {
     console.log(response);
   })
