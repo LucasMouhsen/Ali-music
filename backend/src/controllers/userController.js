@@ -6,29 +6,12 @@ require('dotenv').config()
 
 module.exports = {
     profile: async (req, res) => {
-        const authorization = req.get('authorization')
-        let token = null
-
-        if (authorization && authorization.trim().toLowerCase().startsWith('bearer')) {
-            token = authorization.substring(7);
-        }
-        console.log(token);
-        let decodeToken = {}
+        const { userId } = req
         try {
-            decodeToken = await jwt.verify(token, process.env.SECRET);
-        } catch (error) {
-            console.error(error);
-        }
-        
-        console.log('decodeToken', decodeToken);
-        if (!token || !decodeToken.id) {
-            return res.status(401).json({ error: 'Token invalido o no encontrado' })
-        }
-        try {
-            // Obtener el usuario por su clave primaria (id)
-            const user = await db.User.findByPk(decodeToken.id);
+            // Obtener el usuario por su clave primaria (userId)
+            const user = await db.User.findByPk(userId);
 
-            // Enviar la respuesta con el perfil del usuario y la lista de productos
+            // Enviar la respuesta con el perfil del usuario
             res.json({
                 title: user.firstName + ' ' + user.lastName,
                 user: {
@@ -47,23 +30,33 @@ module.exports = {
         }
     },
     login: async (req, res) => {
+        // Validamos los datos que vienen en el body
         let errors = validationResult(req);
+        // si hay errores los retornamos
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        // buscamos por body el email
         const { email } = req.body
         const options = {
             where: {
                 email: email,
             }
         };
+        // Buscamos el usuario por correo electronico y lo guardamos en user
         const user = await db.User.findOne(options);
         const userLogin = {
             id: user.id,
         }
-
-        const token = jwt.sign(userLogin, process.env.SECRET)
-
+        // creamos un token con los datos recibidos que dura 7 dias
+        const token = jwt.sign(
+            userLogin,
+            process.env.SECRET,
+            {
+                expiresIn: 60 * 60 * 24 * 7
+            }
+        )
+        // Retornamos el token y el nombre completo del usuario logueado
         return res.status(200).json(
             req.session.userLogin = {
                 id: user.id,
@@ -76,11 +69,15 @@ module.exports = {
         )
     },
     register: async (req, res) => {
+        // validamos que no haya errore
         let errors = validationResult(req);
+        // si hay errores los retornamos
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        // traemos datos del body
         const { userName, firstName, lastName, email, password } = req.body
+        // creamos el usuario
         await db.User.create({
             userName: userName.trim(),
             firstName: firstName.trim().toLowerCase(),
@@ -92,23 +89,38 @@ module.exports = {
             avatar: req.file ? req.file.filename : 'avatar_default.png',
         })
             .then((user) => {
+                const userLogin = {
+                    id: user.id,
+                }
+                // creamos un token con los datos recibidos que dura 7 dias
+                const token = jwt.sign(
+                    userLogin,
+                    process.env.SECRET,
+                    {
+                        expiresIn: 60 * 60 * 24 * 7
+                    }
+                )
+                // retornamos datos de sesion
                 return res.json(
                     req.session.userLogin = {
                         id: user.id,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         avatar: user.avatar,
-                        rol: user.rol
+                        rol: user.rol,
+                        token
                     }
                 )
             })
     },
     logout: (req, res) => {
-        req.session.destroy();
-        res.cookie("recordarme", null, { MaxAge: -1 });
+        // Elimina el token JWT del lado del cliente
+        res.clearCookie('token');
+
+        // Envía una respuesta JSON indicando que el usuario se ha deslogueado
         res.json({
             status: "usuario deslogeado"
-        })
+        });
     },
     profileUpdate: (req, res) => {
         let errors = validationResult(req);
@@ -116,6 +128,7 @@ module.exports = {
             return res.status(400).json({ errors: errors.array() });
         }
         const { firstName, lastName, number, password, newPassword, avatar } = req.body
+        const { userId } = req
         db.User.update(
             {
                 firstName: firstName.trim(),
@@ -125,22 +138,17 @@ module.exports = {
                 avatar: req.file ? req.file.filename : avatar
             },
             {
-                where: { id: req.session.userLogin.id }
+                where: { id: userId }
             }
         )
-        db.User.findOne({
-            where: { id: req.params.id }
+        .then(() => {
+            res.json({
+                status: "usuario actualizado"
+            });
         })
-            .then(() => {
-                res.locals.userLogin = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    avatar: req.file ? req.file.filename : avatar,
-                }
-            })
-            .catch(error => console.log(error))
-        res.json({
-            status: "usuario actualizado"
-        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: 'Error al actualizar el perfil del usuario' });
+        });
     }
 }

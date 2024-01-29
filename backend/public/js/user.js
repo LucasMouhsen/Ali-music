@@ -34,7 +34,6 @@ window.addEventListener("load", () => {
 
   openDelete.forEach((element,index) => {
     element.addEventListener('click', () => {
-      console.log("llega");
       modal_delete[index].classList.add('show');
     });
     closeDelete.forEach((element) => {
