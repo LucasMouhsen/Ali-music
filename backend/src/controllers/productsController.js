@@ -1,6 +1,3 @@
-/* const fs = require('fs'); */
-/* const path = require('path'); */
-/* const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json'),'utf-8')); */
 const capitalizarPrimeraLetra = require("../utils/capitalizeOneLetter.js")
 const db = require('../database/models');
 const { Op } = require("sequelize");
@@ -14,6 +11,7 @@ module.exports = {
         // Inicializar options sin ninguna restricción específica
         let options = {
             include: ['images', 'productStates'],
+            order: [['id', 'DESC']]
         };
         // Construir dinámicamente la condición de búsqueda
         let whereCondition = {};
@@ -46,6 +44,7 @@ module.exports = {
         // Si no hay errores que cree el producto
         if (errors.isEmpty()) {
             const { name, price, discount, category, description } = req.body
+            const { userId } = req
             const status = 1
             // Creamos un nuevo objeto Product en base a los datos recibidos
             db.Product.create(
@@ -57,7 +56,7 @@ module.exports = {
                     fav: 0,
                     sold: 0,
                     cart: 0,
-                    userId: req.session.userLogin.id,
+                    userId: userId,
                     categoryId: category,
                     statusId: status
                 }
@@ -84,14 +83,29 @@ module.exports = {
             return res.status(400).json({ errors: errors.array() });
         }
     },
-    editProduct: (req, res) => {
-        // Validamos que no lleguen errores del middleware
-        let errors = validationResult(req);
-        // Si no hay errores que edite el producto
-        if (errors.isEmpty()) {
+    editProduct: async (req, res) => {
+        try {
+            // Validamos que no lleguen errores del middleware
+            let errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json(errors.array());
+            }
             const { name, description, price, discount, category } = req.body;
-            // editamos Product en base a los datos recibidos
-            db.Product.update(
+            const { userId } = req;
+
+            // Buscamos el producto en la base de datos
+            const updatedProduct = await db.Product.findByPk(req.params.id);
+            if (!updatedProduct) {
+                return res.status(404).json('Producto no encontrado');
+            }
+
+            // Si el producto no es del usuario, devolvemos un error
+            if (updatedProduct.userId !== userId) {
+                return res.status(403).json('Usted no es el propietario de este producto');
+            }
+
+            // Editamos Product en base a los datos recibidos
+            await db.Product.update(
                 {
                     name: name.trim(),
                     description: description.trim(),
@@ -100,51 +114,37 @@ module.exports = {
                     categoryId: category,
                 },
                 {
-                    where: { id: req.params.id } 
+                    where: { id: req.params.id }
                 }
-            ).then(async () => {
-                // buscamos el producto por base
-                const updatedProduct = await db.Product.findByPk(req.params.id);
-                // Si no encontramos producto devolvemos error
-                if (!updatedProduct) {
-                    return res.status(404).json('Producto no encontrado');
-                }
-                // Si el producto no es del usuario devolvemos error
-                if (updatedProduct.userId !== req.session.userLogin.id) {
-                    return res.status(403).json('Usted no es el propietario de este producto');
-                }
-                // buscamos las imagenes del producto
-                db.ImageProduct.findByPk(req.params.id, {
-                    include: ['product']
-                })
-                    .then(async () => {
-                        if (req.files.length !== 0) {
-                            let images = req.files.map(image => {
-                                let item = {
-                                    image: image.filename,
-                                    productId: req.params.id
-                                }
-                                return item
-                            });
-                            // eliminamos las imagenes viejas y agregamos las nuevas
-                            await queryInterface.bulkDelete('imageproducts', {
-                                productId: req.params.id
-                            });
-                            // Guardamos las imágenes asociadas al producto
-                            db.ImageProduct.bulkCreate(images, { validate: true, updateOnDuplicate: ["productId"] })
-                                .then(() => console.log('Imágenes guardadas satisfactoriamente'))
-                                .catch(error => console.error(error));
-                        }
-                        return res.json('Producto actualizado');
-                    })
-                    .catch(error => console.error(error));
-            });
-        } else {
-            return res.status(400).json(errors.array());
+            );
+
+
+            // Buscamos las imágenes del producto
+            const images = req.files.map(image => ({
+                image: image.filename,
+                productId: req.params.id
+            }));
+
+            if (req.files.length !== 0) {
+                // Eliminamos las imágenes viejas y agregamos las nuevas
+                await queryInterface.bulkDelete('imageproducts', {
+                    productId: req.params.id
+                });
+
+                // Guardamos las imágenes asociadas al producto
+                await db.ImageProduct.bulkCreate(images, { validate: true, updateOnDuplicate: ["productId"] });
+                console.log('Imágenes guardadas satisfactoriamente');
+            }
+
+            return res.json('Producto actualizado');
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json('Error interno del servidor');
         }
     },
     deleteProduct: (req, res) => {
         // Buscamos el producto con sus imagenes
+        const { userId } = req
         db.Product.findByPk(req.params.id, {
             include: ['images']
         })
@@ -154,7 +154,7 @@ module.exports = {
                     return res.status(404).json('Producto no encontrado');
                 }
                 // si el producto no es del usuario devolvemos error
-                if (product.userId !== req.session.userLogin.id) {
+                if (product.userId !== userId) {
                     return res.status(403).json('Usted no es el propietario de este producto');
                 }
                 // Destruimos primero las imagenes

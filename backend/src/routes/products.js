@@ -3,20 +3,16 @@ var router = express.Router();
 const { products, createProduct, editProduct, deleteProduct } = require('../controllers/productsController')
 const uploadProduct = require('../middleware/fotoProductMulter')
 
-const loginCheck = require("../middleware/loginCheck");
+/* Validacion producto */
 const productValidation = require('../validations/productValidation');
-const editProductValidation = require('../validations/editProductValidation');
+/* Validacion token */
+const userExtractor = require('../middleware/userExtractor')
 /* GET home page. */
 
-/* router.get('/cart', loginCheck, cart);
-router.get('/infoUser', loginCheck, info);
-router.put('/cart/:id', loginCheck, addCart) */
-
-
 router.get('/', products)
-router.post('/create', loginCheck,   uploadProduct.array('image'), productValidation, createProduct)
-router.post('/edit/:id', loginCheck, uploadProduct.array('image'), productValidation, editProduct)
-router.post('/delete/:id', loginCheck, deleteProduct)
+router.post('/create', userExtractor,   uploadProduct.array('image'), productValidation, createProduct)
+router.post('/edit/:id', userExtractor, uploadProduct.array('image'), productValidation, editProduct)
+router.post('/delete/:id', userExtractor, deleteProduct)
 
 
 
