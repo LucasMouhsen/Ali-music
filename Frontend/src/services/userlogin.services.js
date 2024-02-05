@@ -24,7 +24,3 @@ export async function userLogin(mail, password) {
     throw error;
   }
 }
-userLogin('loki@gmail.com','Lucas2024')
-  .then((response) =>{
-    console.log(response);
-  })

@@ -15,11 +15,3 @@ export async function userProfile(token) {
     throw error;
   }
 }
-
-userProfile('')
-  .then((response)=> {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error('Hubo un error:', error);
-  });
