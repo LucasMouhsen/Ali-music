@@ -1,7 +1,7 @@
 const capitalizarPrimeraLetra = require("../utils/capitalizeOneLetter.js")
 const db = require('../database/models');
 const { Op } = require("sequelize");
-const { validationResult, body } = require("express-validator");
+const { validationResult } = require("express-validator");
 const queryInterface = db.sequelize.getQueryInterface();
 
 module.exports = {
