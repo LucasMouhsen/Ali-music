@@ -15,7 +15,7 @@ const recordame = require('./middleware/cookie');
 
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
-var comunityRouter = require('./routes/comunity');
+var cartRouter = require('./routes/cart');
 
 var app = express();
 
@@ -38,11 +38,11 @@ app.use(session({
   resave : false,
 }));
 
-app.options('/api/products/create', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.status(204).end();
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Permite todas las solicitudes
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Métodos permitidos
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // Cabeceras permitidas
+  next();
 });
 
 //app para recordame usuario
@@ -53,7 +53,7 @@ app.use(localUser);
 
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/comunity', comunityRouter);
+app.use('/api/cart', cartRouter)
 
 
 // catch 404 and forward to error handler
@@ -73,4 +73,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-/*  */
