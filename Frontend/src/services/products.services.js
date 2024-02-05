@@ -6,7 +6,6 @@ export async function productsService() {
   try {
     const response = await axios.get(url);
     const data = response.data;
-
     return data;
   } catch (error) {
     console.error('Hubo un error al realizar la solicitud:', error);

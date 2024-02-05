@@ -1,0 +1,81 @@
+.cardProduct {
+    width: 100%;
+    max-height: 380px;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background: #fff;
+    padding: 1rem;
+    transition: all .3s;
+    position: relative;
+}
+.cardProduct:active {
+    transform: scale(0.98);
+}
+
+.imageProduct {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.infoProduct {
+    padding: 1rem .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardProduct .titleProduct {
+    font-size: 25px;
+    font-weight: 400;
+    min-height: 70px;
+    color: #000;
+    border-bottom: #000 solid 1px;
+}
+
+.cardProduct .priceProduct {
+    font-size: 16px;
+    color: #000;
+}
+
+.options {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background: #00AC7C;
+    color: #fff;
+    width: 100%;
+    height: 25%;
+    font-weight: 600;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.options .cart {
+    width: 40px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #252525;
+    border-radius: 50px;
+    transition: all .3s;
+}
+
+.options .cart:hover {
+    background-color: #ffe7de;
+}
+
+.cardProduct:hover .options {
+    bottom: 0;
+    opacity: 1;
+}
+
+
+.cardProduct:active .options {
+    transition: all .3s;
+    height: 4.5rem;
+}
