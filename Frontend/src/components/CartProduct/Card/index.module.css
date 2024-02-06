@@ -1,0 +1,59 @@
+.card {
+    display: grid;
+    grid-template-columns: 0.1fr 2fr 1fr 0.1fr;
+    align-items: center;
+    gap: 0.5rem;
+    height: 90px;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.card img {
+    width: 70px;
+    /* max-height: 88px;
+    object-fit: cover; */
+}
+
+.card .drinkiInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.card .drinkiInfo p {
+    width: 100%;
+}
+
+.card .counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #b2b2b2;
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.card .counter .iconCounter {
+    color: #005772;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+
+.card .counter .iconCounter:hover {
+    transform: scale(1.3);
+}
+
+.card .counter .numberCounter {
+    color: blue;
+    font-size: 1.2rem;
+}
+
+.card .trash {
+    justify-self: center;
+    cursor: pointer;
+    color: red;
+    font-size: 1rem;
+}

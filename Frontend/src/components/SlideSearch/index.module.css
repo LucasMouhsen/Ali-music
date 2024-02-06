@@ -1,0 +1,18 @@
+.slideSearch {
+    padding: 5rem 2rem;
+    cursor: pointer;
+}
+.title{
+    font-size: 16px;
+    padding: 1rem 0;
+    line-height: 1.25;
+    font-weight: 600;
+}
+.category{
+    font-size: 14px;
+    padding: .3rem 0;
+    color: #666;
+}
+.category:last-child{
+    border-top: 1px  solid #666666;
+}
