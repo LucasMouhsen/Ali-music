@@ -5,7 +5,6 @@ import useProducts from '../../hooks/useProducts'
 import styles from './index.module.css'
 import SlideSearch from '../../components/SlideSearch';
 import CardProductsEmpty from '../../components/CardProductEmpty';
-import CartModal from '../../components/CartProduct';
 
 export default function Products() {
     const { products, loading } = useProducts()
@@ -13,7 +12,6 @@ export default function Products() {
     return (
         <>
             <Header />
-            <CartModal/>
             <main className={styles.products}>
                 <SlideSearch />
                 <section className={styles.productsList}>
