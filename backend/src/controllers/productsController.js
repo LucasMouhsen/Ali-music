@@ -54,13 +54,15 @@ module.exports = {
         return res.json(data);
     },
     categories: async (req, res) => {
+        // buscamos las categorias por base
         try {
             const categories = await db.Category.findAll();
+            // solo nos quedamos con id y category
             const categoryNames = categories.map(category => ({
                 id: category.id,
                 category: category.category
             }));
-            res.json(categoryNames);
+            return res.json(categoryNames);
         } catch (error) {
             console.error("Error al obtener las categorías:", error);
             res.status(500).json({ error: "Error al obtener las categorías" });
@@ -120,18 +122,15 @@ module.exports = {
             }
             const { name, description, price, discount, category } = req.body;
             const { userId } = req;
-
             // Buscamos el producto en la base de datos
             const updatedProduct = await db.Product.findByPk(req.params.id);
             if (!updatedProduct) {
                 return res.status(404).json('Producto no encontrado');
             }
-
             // Si el producto no es del usuario, devolvemos un error
             if (updatedProduct.userId !== userId) {
                 return res.status(403).json('Usted no es el propietario de este producto');
             }
-
             // Editamos Product en base a los datos recibidos
             await db.Product.update(
                 {
@@ -145,25 +144,20 @@ module.exports = {
                     where: { id: req.params.id }
                 }
             );
-
-
             // Buscamos las imágenes del producto
             const images = req.files.map(image => ({
                 image: image.filename,
                 productId: req.params.id
             }));
-
             if (req.files.length !== 0) {
                 // Eliminamos las imágenes viejas y agregamos las nuevas
                 await queryInterface.bulkDelete('imageproducts', {
                     productId: req.params.id
                 });
-
                 // Guardamos las imágenes asociadas al producto
                 await db.ImageProduct.bulkCreate(images, { validate: true, updateOnDuplicate: ["productId"] });
                 console.log('Imágenes guardadas satisfactoriamente');
             }
-
             return res.json('Producto actualizado');
         } catch (error) {
             console.error(error);
