@@ -26,7 +26,7 @@ export default function AppRoutes() {
 
                 {/* Products */}
                 <Route path='/products' element={<Products/>}/>
-                <Route path='/detail/:id' element={<Detail/>}/>
+                <Route path='/products/detail/:id' element={<Detail/>}/>
                 <Route path='/cart' element={<Cart/>}/>
 
                 {/* Admin */}
