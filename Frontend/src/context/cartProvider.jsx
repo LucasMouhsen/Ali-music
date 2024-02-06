@@ -1,39 +1,43 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import PropTypes from 'prop-types';
 import { actionTypes } from "../actions/cart.actions"
 import { cartReducer, cartInitialState } from "../reducers/cart.reducer";
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) =>{
+export const CartProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(cartReducer, cartInitialState)
+    const [totalPriceCart, setTotalPriceCart] = useState(0)
 
     function addToCart(product) {
         dispatch({ type: actionTypes.ADD_TO_CART, payload: product })
     }
-    function removeOneFromCart(idProduct) {
-        dispatch({ type: actionTypes.REMOVE_ONE_FROM_CART, payload: { idProduct } })
+    function removeOneFromCart(product) {
+        dispatch({ type: actionTypes.REMOVE_ONE_FROM_CART, payload: product })
     }
-    function removeAllFromCart(idProduct) {
-        dispatch({ type: actionTypes.REMOVE_ALL_FROM_CART, payload: { idProduct } })
+    function removeAllFromCart(product) {
+        dispatch({ type: actionTypes.REMOVE_ALL_FROM_CART, payload: product })
 
     }
-    function clearCart(idProduct) {
-        dispatch({ type: actionTypes.CLEAR_CART, payload: { idProduct } })
+    function clearCart(product) {
+        dispatch({ type: actionTypes.CLEAR_CART, payload: {} })
     }
-    function totalPrice() {
-        let updatedPrice = 0;
+    
+    useEffect(() => {
+        let updatedPrice = 0
         state.cartItems.forEach((product) => {
-            updatedPrice += product.quantity * product.price;
-            state.totalPrice = updatedPrice
-        });
-        return updatedPrice
-    }
+            updatedPrice += product.quantity * product.price
+        })
+        setTotalPriceCart(updatedPrice)
+    }, [state])
 
-function sendOrder(){
-    alert(JSON.stringify(state))
-}
+    function sendOrder() {
+        alert(JSON.stringify({
+            state,
+            totalPrice: totalPriceCart
+        }))
+    }
 
     const cartValues = {
         cart: state,
@@ -41,7 +45,7 @@ function sendOrder(){
         removeOneFromCart,
         removeAllFromCart,
         clearCart,
-        totalPrice,
+        totalPriceCart,
         sendOrder
     }
     return (

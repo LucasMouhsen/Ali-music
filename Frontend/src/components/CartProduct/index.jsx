@@ -8,12 +8,12 @@ import useModal from "../../hooks/useModal"
 
 export default function CartModal() {
     const { isOpen, toogleModal } = useModal()
-    const { cart, clearCart, totalPrice, sendOrder } = useCart();
+    const { cart, clearCart, totalPriceCart, sendOrder } = useCart();
     function handleClearCart() {
         clearCart()
     }
-
-    if (!isOpen) return (
+    
+    if (isOpen) return (
         <div className={styles.modalBg} >
             <div className={styles.modal}>
                 <FontAwesomeIcon icon={faXmarkCircle} className={styles.icon} onClick={toogleModal} />
@@ -29,8 +29,8 @@ export default function CartModal() {
                     </div>
                 </section>
                 <aside className={styles.cardAside}>
-                    <p>SubTotal: $ {totalPrice()}</p>
-                    <p>Total: $ {totalPrice()}</p>
+                    <p>SubTotal: $ {totalPriceCart}</p>
+                    <p>Total: $ {totalPriceCart}</p>
                     <div className={styles.btnContainer}>
                         <button className={styles.clearCart} onClick={() => handleClearCart()}>Vaciar carrito</button>
                         <button className={styles.confirmOrder} onClick={() => sendOrder()}>Confirmar compra</button>
