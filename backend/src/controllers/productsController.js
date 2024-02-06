@@ -6,12 +6,11 @@ const queryInterface = db.sequelize.getQueryInterface();
 
 module.exports = {
     products: async (req, res) => {
-        const { id, name } = req.query;
+        const { id, name, category } = req.query;
 
         // Inicializar options sin ninguna restricción específica
         let options = {
-            include: ['images', 'productStates'],
-            order: [['id', 'DESC']]
+            include: ['images', 'productStates']
         };
         // Construir dinámicamente la condición de búsqueda
         let whereCondition = {};
@@ -25,18 +24,47 @@ module.exports = {
                 [Op.like]: `%${name}%`,
             };
         }
+        if (category) {
+            whereCondition.CategoryId = {
+                [Op.eq]: category,
+            };
+        }
         // Aplicar la condición de búsqueda solo si hay alguna condición definida
         if (Object.keys(whereCondition).length > 0) {
             options.where = whereCondition;
         }
         // Buscaqueda por base
         const rows = await db.Product.findAll(options);
+        // Contar la cantidad de productos por categoryId
+        const categoryCounts = {};
+        rows.forEach(product => {
+            const categoryId = product.CategoryId;
+            if (!categoryCounts[categoryId]) {
+                categoryCounts[categoryId] = 1;
+            } else {
+                categoryCounts[categoryId]++;
+            }
+        });
         // Retorno json con cantidad de filas y la informacion
         const data = {
             iTotalRecords: +rows.length,
-            data: rows,
+            categoryCounts: categoryCounts,
+            data: rows
         };
         return res.json(data);
+    },
+    categories: async (req, res) => {
+        try {
+            const categories = await db.Category.findAll();
+            const categoryNames = categories.map(category => ({
+                id: category.id,
+                category: category.category
+            }));
+            res.json(categoryNames);
+        } catch (error) {
+            console.error("Error al obtener las categorías:", error);
+            res.status(500).json({ error: "Error al obtener las categorías" });
+        }
     },
     createProduct: (req, res) => {
         // Validamos que no lleguen errores del middleware
