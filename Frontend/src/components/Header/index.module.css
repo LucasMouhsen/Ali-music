@@ -1,20 +1,64 @@
 .header {
-    padding: 1rem 2rem;
-    font-size: 28px;
     width: 100%;
-    height: 10vh;
 
     z-index: 9;
     position: fixed;
+}
 
+.header .headerTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 28px;
+    padding: 1rem 2rem;
+    height: 70px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.header .title {
+
+.header .headerTop .title {
     color: #000;
     font-weight: 600;
     font-size: 1.2em;
+}
+
+.header .cart {
+    width: 40px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #252525;
+    border-radius: 50px;
+    transition: all .3s;
+}
+
+.header .cart:hover {
+    transform: scale(1.1);
+}
+
+.header .headerBottom {
+    height: 40px;
+    background-color: #0f006e90;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.header .headerBottom .boxPages,
+.header .headerBottom .boxButton {
+    display: flex;
+    align-items: center;
+    gap:  15px;
+    padding: 0 15px;
+}
+.section{
+    font-size: 16px;
+    padding: 1rem 0;
+    line-height: 1.25;
+    font-weight: 600;
+}
+.category{
+    font-size: 14px;
+    padding: .3rem 0;
+    color: #666;
+}
+.category:last-child{
+    border-top: 1px  solid #666666;
 }
