@@ -18,7 +18,7 @@ export function ModalCard({product}) {
     return (
         <article className={styles.card}>
             <img src={`images/articulos/${product.images[0].image}`} alt="" />
-            <div className={styles.drinkiInfo}>
+            <div className={styles.productInfo}>
                 <span>{product.name}</span>
                 <span>$ {product.price}</span>
             </div>

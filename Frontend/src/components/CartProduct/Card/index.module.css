@@ -13,13 +13,13 @@
     object-fit: contain;
 }
 
-.card .drinkiInfo {
+.card .productInfo {
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
 }
 
-.card .drinkiInfo p {
+.card .productInfo p {
     width: 100%;
 }
 
