@@ -1,18 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import styles from './index.module.css'
 
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Importa los estilos de Font Awesome
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import useModal from '../../hooks/useModal';
 
 export default function Header() {
+    const { toogleModal } = useModal()
     return (
         <div className={styles.header}>
             <ul className={styles.headerList}>
                 <li><a href="/" className={styles.title}>AliMusic</a></li>
             </ul>
             <div >
-               {/*  <input type="text" placeholder="Buscar..." id="searchInput"/> */}
+                <FontAwesomeIcon icon={faCartShopping} onClick={toogleModal} />
             </div>
         </div>
     );

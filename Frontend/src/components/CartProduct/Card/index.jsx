@@ -10,10 +10,10 @@ export function ModalCard({product}) {
         addToCart(product)
     }
     function handleRemoveOneFromCart(product) {
-        removeOneFromCart(product.id)
+        removeOneFromCart(product)
     }
-    function handleRemoveAllFromCart(idProduct) {
-        removeAllFromCart(idProduct)
+    function handleRemoveAllFromCart(product) {
+        removeAllFromCart(product)
     }
     return (
         <article className={styles.card}>
@@ -24,10 +24,10 @@ export function ModalCard({product}) {
             </div>
             <div className={styles.counter}>
                 <FontAwesomeIcon icon={faMinus} className={styles.iconCounter} onClick={() => handleRemoveOneFromCart(product)} />
-                <span className={styles.numberCounter}>{product.quantity}</span> {/* chequear */}
+                <span className={styles.numberCounter}>{product.quantity}</span>
                 <FontAwesomeIcon icon={faPlus} className={styles.iconCounter} onClick={() => handleAddToCart(product)} />
             </div>
-            <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={() => handleRemoveAllFromCart(product.id)} />
+            <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={() => handleRemoveAllFromCart(product)} />
         </article>
     )
 }

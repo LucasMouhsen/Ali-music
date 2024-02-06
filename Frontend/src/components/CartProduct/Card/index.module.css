@@ -9,8 +9,8 @@
 
 .card img {
     width: 70px;
-    /* max-height: 88px;
-    object-fit: cover; */
+    max-height: 85px;
+    object-fit: contain;
 }
 
 .card .drinkiInfo {
