@@ -6,13 +6,14 @@ const productContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [category, setCategory] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     const getProducts = async () => {
       try {
-        setLoading(true);
-        const data = await productsService();
+        const data = await productsService(category);
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -22,14 +23,16 @@ const ProductProvider = ({ children }) => {
       }
     };
     getProducts();
-  }, []);
-  
+
+  }, [category]);
+
 
 
   const contextValues = {
     products: products.data,
     iTotalRecords: products.iTotalRecords,
-    loading
+    loading,
+    setCategory
   };
 
   return (
