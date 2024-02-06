@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export async function productsService() {
-  const url = `http://localhost:3000/api/products`;
+export async function productsService(category) {
+  const url = `http://localhost:3000/api/products${category ? `/?category=${category}` : ''}`;
 
   try {
     const response = await axios.get(url);
@@ -12,3 +12,4 @@ export async function productsService() {
     throw error;
   }
 }
+
