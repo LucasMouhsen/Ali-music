@@ -1,5 +1,34 @@
+.containerLoader {
+    width: 100%;
+    min-height: 250px;
+    max-height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00AC7C;
+}
+
+.loader {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-top: 8px solid #fff;
+    border-left: 8px solid #fff;
+    border-right: 8px solid #ff00;
+    animation: loader .7s infinite linear;
+}
+
+@keyframes loader {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 .cardProduct {
     width: 100%;
+    min-height: 250px;
     max-height: 380px;
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -10,6 +39,7 @@
     transition: all .3s;
     position: relative;
 }
+
 .cardProduct:active {
     transform: scale(0.98);
 }
