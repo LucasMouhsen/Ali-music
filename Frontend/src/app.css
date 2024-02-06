@@ -28,11 +28,6 @@ textarea {
 body {
   background-color: #ffe7de;
 }
-
-main {
-  margin-top: 10vh;
-}
-
 :root {
   --color-background: ##f8f9fa;
   --color-nav-header: #474a5680;
