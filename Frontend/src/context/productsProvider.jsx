@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { productsService } from "../services/products.services";
+import { productService } from "../services/product.services";
 
 const productContext = createContext();
 
@@ -8,23 +9,30 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState(null);
+  const [product, setProduct] = useState(null)
+  const [id, setId] = useState(null)
 
   useEffect(() => {
     setLoading(true);
     const getProducts = async () => {
       try {
-        const data = await productsService(category);
-        setProducts(data);
+        console.log(id);
+        if (id) {
+          const currenProduct = await productService(id);
+          setProduct(currenProduct)
+        } else {
+          const data = await productsService(category);
+          setProducts(data);
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
-        // Puedes agregar lógica adicional para manejar el error, como mostrar un mensaje al usuario.
       } finally {
         setLoading(false);
       }
     };
     getProducts();
 
-  }, [category]);
+  }, [category, id]);
 
 
 
@@ -32,7 +40,9 @@ const ProductProvider = ({ children }) => {
     products: products.data,
     iTotalRecords: products.iTotalRecords,
     loading,
-    setCategory
+    setCategory,
+    product,
+    setId
   };
 
   return (
