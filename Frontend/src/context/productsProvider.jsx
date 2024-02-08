@@ -16,7 +16,6 @@ const ProductProvider = ({ children }) => {
     setLoading(true);
     const getProducts = async () => {
       try {
-        console.log(id);
         if (id) {
           const currenProduct = await productService(id);
           setProduct(currenProduct)
