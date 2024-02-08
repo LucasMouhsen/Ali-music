@@ -1,43 +1,18 @@
 .header {
     width: 100%;
-
     z-index: 9;
     position: fixed;
 }
-
-.header .headerTop {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 28px;
-    padding: 1rem 2rem;
-    height: 70px;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.header .headerTop .title {
-    color: #000;
-    font-weight: 600;
-    font-size: 1.2em;
-}
-
 .header .cart {
-    width: 40px;
-    padding: 5px;
+    width: 25px;
     cursor: pointer;
-    border: 1px solid #252525;
+    color: #fff;
     border-radius: 50px;
-    transition: all .3s;
+    transition: all .4s;
 }
-
-.header .cart:hover {
-    transform: scale(1.1);
-}
-
 .header .headerBottom {
     height: 40px;
-    background-color: #0f006e90;
+    background-color: #252525;
     display: grid;
     grid-template-columns: 4fr 1fr;
 }

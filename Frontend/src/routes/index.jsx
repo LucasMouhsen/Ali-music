@@ -3,7 +3,6 @@ import Home from '../pages/Home'
 import About from '../pages/About'
 import Privacity from '../pages/Privacity'
 import Login from '../pages/Login'
-import Register from '../pages/Register'
 import Profile from '../pages/Profile'
 import Products from '../pages/Products'
 import Detail from '../pages/Detail'
@@ -21,7 +20,6 @@ export default function AppRoutes() {
 
                 {/* User */}
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/register' element={<Register/>}/>
                 <Route path='/profile' element={<Profile/>}/>
 
                 {/* Products */}
