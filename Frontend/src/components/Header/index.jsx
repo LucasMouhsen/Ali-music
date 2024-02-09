@@ -10,6 +10,14 @@ import CartModal from '../../components/CartProduct';
 export default function Header() {
     const { toogleModal } = useModal()
     const { products, setCategory } = useProducts()
+    const storedToken = window.localStorage.getItem('loginAppUser');
+    const isAuthenticated = !!storedToken;
+
+    
+    const hangleLogOut = () => {
+        window.localStorage.removeItem('loginAppUser');
+        return window.location.href = '/login'
+    }
 
     function toggleCategory(category) {
         setCategory(category)
@@ -18,16 +26,22 @@ export default function Header() {
         <div className={styles.header}>
             <div className={styles.headerBottom}>
                 <div className={styles.boxPages}>
-                    <Button text='Productos' href="/products" />
-                    <Button text='Guitarras' onClick={toggleCategory} href="/products" />
-                    <Button text='About' href="/about" />
-                    <Button text='Support' href="/support" />
+                    <Button text='Productos' href={() => window.location.href = '/products'} />
+                    <Button text='Guitarras'  href={() => window.location.href = '/products'} />
+                    <Button text='About' href={() => window.location.href = '/about'} />
+                    <Button text='Support' href={() => window.location.href = '/support'} />
                 </div>
                 <div className={styles.boxButton}>
-                    <Button text='Log in' href="/login" />
-                    <div 
+                    {isAuthenticated ?
+                    <>
+                        <Button text='Log out' href={hangleLogOut}  /> 
+                        <Button text='Perfil' href={() => window.location.href = '/profile'}  /> 
+                    </>
+                        :
+                        <Button text='Log in' href={() => window.location.href = '/login'} />}
+                    <div
                         onClick={toogleModal}>
-                        <Button text='cart' href='#cart' /> 
+                        <Button text='cart' />
                     </div>
                     <CartModal />
                 </div>
