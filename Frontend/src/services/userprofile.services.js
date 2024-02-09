@@ -5,7 +5,7 @@ export async function userProfile(token) {
 
   try {
     // Make a request for a user with a given token.
-    const response = await axios(url,{headers: { Authorization: `Bearer ${token}` } });
+    const response = await axios(url,{headers: { Authorization: token } });
     /* const response = await axios.get(url, { withCredentials: true }); */
     const responseData = response.data;
 

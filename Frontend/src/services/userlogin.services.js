@@ -1,14 +1,13 @@
 import axios from 'axios';
 import qs from 'qs'
 
-export async function userLogin(mail, password) {
+export async function userLogin(email, password) {
   const url = 'http://localhost:3000/api/users/login';
 
-  let data = qs.stringify({
-    'email': mail,
-    'password': password
-  });
-  
+  let data = {
+    email,
+    password
+  }
   const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

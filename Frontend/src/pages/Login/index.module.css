@@ -34,8 +34,8 @@
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
-    top: 0.438em;
-    left: 0.438em;
+    top: 0.4em;
+    left: 0.4em;
     background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%);
     background-size: 205%;
     background-position: 100%;
@@ -44,7 +44,7 @@
 }
 
 .switch:checked::before {
-    left: calc(100% - 2rem - 0.438em);
+    left: calc(100% - 2rem);
     background-position: 0;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .boxUser {
-    background-color: #fff;
+    background-color: var(--background-login);
     display: flex;
     align-items: center;
     width: 80%;
@@ -99,7 +99,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     padding: 20px 30px;
-    background-color: #fff;
+    background-color: var(--background-form-login);
 }
 
 .RegisterContainer {
@@ -186,7 +186,7 @@
 }
 
 .googleLoginButton {
-    border: 2px solid #747474;
+    border: 1px solid #747474;
 }
 
 .google-icon {

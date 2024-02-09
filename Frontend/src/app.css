@@ -44,4 +44,7 @@ body {
   --color-h1-rgba: #474a5680;
   --color-a-fav: #ff4500;
   --font-family: 'Rajdhani', sans-serif;
+  /* LOGIN */
+  --background-login: #222831;
+  --background-form-login: #EEEEEE;
 }

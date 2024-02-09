@@ -1,7 +1,10 @@
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { userLogin } from '../../services/userlogin.services';
+import { useState } from 'react';
 
-export default function FormLogin({styles}) {
+export default function FormLogin({ styles }) {
+    const [loading, setLoading] = useState(false);
     const initialValues = {
         emailLogin: '',
         passwordLogin: '',
@@ -11,8 +14,36 @@ export default function FormLogin({styles}) {
         emailLogin: Yup.string().required('El campo mail es obligatorio'),
         passwordLogin: Yup.string().required('El campo contraseña es obligatorio')
     })
-    const handleSubmit = (values) => {
-        console.log(values);
+
+    const loginUser = async (id) => {
+        setLoading(true);
+        try {
+            if (id) {
+                const { emailLogin, passwordLogin } = id;
+                const data = await userLogin(emailLogin, passwordLogin);
+                if (data) {
+                    return data
+                }
+                return
+            }
+        } catch (error) {
+            console.error("Error fetching user:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+    const handleSubmit = async (values) => {
+        try {
+            const token = await loginUser(values);
+            if (token) {
+                window.localStorage.setItem('loginAppUser', JSON.stringify(token));
+                return window.location.href = '/profile'
+            }
+            return
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+        }
     };
     return (
         <section className={styles.loginSection}>
@@ -53,7 +84,7 @@ export default function FormLogin({styles}) {
                                     className={styles.formBtn}
                                     type='submit'
                                 >
-                                    Iniciar  Sesión
+                                    {loading ? 'Cargando...' : 'Iniciar  Sesión'}
                                 </button>
                             </form>
                         )}

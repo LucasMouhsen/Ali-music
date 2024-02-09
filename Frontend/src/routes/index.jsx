@@ -9,6 +9,7 @@ import Detail from '../pages/Detail'
 import Cart from '../pages/Cart'
 import Admin from '../pages/Admin'
 import Community from '../pages/Community'
+import LoginCheck from './middleware/LoginCheck'
 
 export default function AppRoutes() {
     return(
@@ -20,7 +21,8 @@ export default function AppRoutes() {
 
                 {/* User */}
                 <Route path='/login' element={<Login/>}/>
-                <Route path='/profile' element={<Profile/>}/>
+                
+                <Route path='/profile' element={<LoginCheck element={<Profile/>} path='/login' />}/>
 
                 {/* Products */}
                 <Route path='/products' element={<Products/>}/>

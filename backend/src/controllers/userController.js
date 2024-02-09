@@ -13,16 +13,14 @@ module.exports = {
 
             // Enviar la respuesta con el perfil del usuario
             res.json({
-                title: user.firstName + ' ' + user.lastName,
-                user: {
-                    userName: user.userName,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    number: user.number,
-                    avatar: user.avatar,
-                    rol: user.rol
-                }
+                userName: user.userName,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                number: user.number,
+                avatar: user.avatar,
+                rol: user.rol
+
             });
         } catch (error) {
             console.error(error);
@@ -57,16 +55,7 @@ module.exports = {
             }
         )
         // Retornamos el token y el nombre completo del usuario logueado
-        return res.status(200).json(
-            req.session.userLogin = {
-                id: user.id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                avatar: user.avatar,
-                rol: user.rol,
-                token
-            }
-        )
+        return res.status(200).json(token)
     },
     register: async (req, res) => {
         // validamos que no haya errore
@@ -101,16 +90,7 @@ module.exports = {
                     }
                 )
                 // retornamos datos de sesion
-                return res.json(
-                    req.session.userLogin = {
-                        id: user.id,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        avatar: user.avatar,
-                        rol: user.rol,
-                        token
-                    }
-                )
+                return res.json(token)
             })
     },
     logout: (req, res) => {
@@ -141,14 +121,14 @@ module.exports = {
                 where: { id: userId }
             }
         )
-        .then(() => {
-            res.json({
-                status: "usuario actualizado"
+            .then(() => {
+                res.json({
+                    status: "usuario actualizado"
+                });
+            })
+            .catch(error => {
+                console.error(error);
+                res.status(500).json({ error: 'Error al actualizar el perfil del usuario' });
             });
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ error: 'Error al actualizar el perfil del usuario' });
-        });
     }
 }
