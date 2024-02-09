@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from '../pages/Home'
 import About from '../pages/About'
-import Privacity from '../pages/Privacity'
+import Privacy from '../pages/Privacy'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import Products from '../pages/Products'
@@ -11,33 +11,31 @@ import Admin from '../pages/Admin'
 import Community from '../pages/Community'
 import LoginCheck from './middleware/LoginCheck'
 
+
 export default function AppRoutes() {
-    return(
+    const storedToken = window.localStorage.getItem('loginAppUser');
+    const isAuthenticated = !!storedToken;
+
+    return (
         <Router>
             <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/privacity' element={<Privacity/>}/>
+                {/* Public Routes */}
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/privacy' element={<Privacy />} />
+                <Route path='/community' element={<Community />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/products/detail/:id' element={<Detail />} />
+                <Route path='/login' element={!isAuthenticated ?<Login /> : <Navigate to='/profile'/>} />
 
-                {/* User */}
-                <Route path='/login' element={<Login/>}/>
-                
-                <Route path='/profile' element={<LoginCheck element={<Profile/>} path='/login' />}/>
+                {/* Private Routes */}
+                <Route path='/profile' element={isAuthenticated ?<Profile /> : <Navigate to='/login'/>} />
+                <Route path='/cart' element={isAuthenticated ?<Cart /> : <Navigate to='/login'/>} />
+                <Route path='/admin' element={isAuthenticated ?<Admin /> : <Navigate to='/login'/>} />
 
-                {/* Products */}
-                <Route path='/products' element={<Products/>}/>
-                <Route path='/products/detail/:id' element={<Detail/>}/>
-                <Route path='/cart' element={<Cart/>}/>
-
-                {/* Admin */}
-                <Route path='/admin' element={<Admin/>}/>
-
-                {/* Comunity */}
-                <Route path='/comunity' element={<Community/>}/>
-                
                 {/* Error */}
-                <Route path='*' element={<h1>Error</h1>}/>
+                <Route path='*' element={isAuthenticated? <Navigate to='/profile'/> : <Navigate to='/login'/>} />
             </Routes>
         </Router>
-    )
+    );
 }
