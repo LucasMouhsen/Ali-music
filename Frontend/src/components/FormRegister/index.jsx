@@ -1,7 +1,10 @@
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { userRegister } from '../../services/userRegister.services';
+import { useState } from 'react';
 
 export default function FormRegister({ styles }) {
+    const [loading, setLoading] = useState()
     const initialValues = {
         firstName: '',
         lastName: '',
@@ -19,8 +22,36 @@ export default function FormRegister({ styles }) {
         password: Yup.string().required('El campo contraseña es obligatorio'),
         password2: Yup.string().required('El campo contraseña es obligatorio'),
     })
-    const handleSubmit = (values) => {
-        console.log(values);
+
+    const registerUser = async (values) => {
+        setLoading(true);
+        try {
+            if (values) {
+                const { firstName, lastName, userName, email, password, password2 } = values;
+                const data = await userRegister(firstName, lastName, userName, email, password, password2);
+                if (data) {
+                    return data
+                }
+                return
+            }
+        } catch (error) {
+            console.error("Error fetching user:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleSubmit = async (values) => {
+        try {
+            const token = await registerUser(values);
+            if (token) {
+                window.localStorage.setItem('loginAppUser', JSON.stringify(token));
+                return window.location.href = '/profile'
+            }
+            return
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+        }
     };
     return (
 
@@ -42,58 +73,83 @@ export default function FormRegister({ styles }) {
                                         </Alert>
                                     )
                                 }
-                                <Field
-                                    id="firstName"
-                                    placeholder="Nombre"
-                                    name="firstName"
-                                    className={styles.input}
-                                />
+                                <div className={styles.boxInput}>
 
-                                <Field
-                                    id="lastName"
-                                    placeholder="Apellido"
-                                    name="lastName"
-                                    className={styles.input}
-                                />
-
-                                <Field
-                                    id="userName"
-                                    placeholder="Usuario"
-                                    name="userName"
-                                    className={styles.input}
-                                />
-
-                                <Field
-                                    id="email"
-                                    placeholder="Mail"
-                                    name="email"
-                                    className={styles.input}
-                                    autoComplete="email"
-                                />
-
-                                <Field
-                                    id="password"
-                                    type="password"
-                                    placeholder="Contraseña"
-                                    name="password"
-                                    className={styles.input}
-                                    autoComplete="password"
-                                />
-
-                                <Field
-                                    id="password2"
-                                    type="password"
-                                    placeholder="Repetir Contraseña"
-                                    name="password2"
-                                    className={styles.input}
-                                    autoComplete="new-password"
-                                />
-
+                                    <Field
+                                        id="firstName"
+                                        placeholder="Nombre"
+                                        name="firstName"
+                                        className={styles.input}
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="firstName" />
+                                    </div>
+                                </div>
+                                <div className={styles.boxInput}>
+                                    <Field
+                                        id="lastName"
+                                        placeholder="Apellido"
+                                        name="lastName"
+                                        className={styles.input}
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="lastName" />
+                                    </div>
+                                </div>
+                                <div className={styles.boxInput}>
+                                    <Field
+                                        id="userName"
+                                        placeholder="Usuario"
+                                        name="userName"
+                                        className={styles.input}
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="userName" />
+                                    </div>
+                                </div>
+                                <div className={styles.boxInput}>
+                                    <Field
+                                        id="email"
+                                        placeholder="Mail"
+                                        name="email"
+                                        className={styles.input}
+                                        autoComplete="email"
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="email" />
+                                    </div>
+                                </div>
+                                <div className={styles.boxInput}>
+                                    <Field
+                                        id="password"
+                                        type="password"
+                                        placeholder="Contraseña"
+                                        name="password"
+                                        className={styles.input}
+                                        autoComplete="password"
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="password" />
+                                    </div>
+                                </div>
+                                <div className={styles.boxInput}>
+                                    <Field
+                                        id="password2"
+                                        type="password"
+                                        placeholder="Repetir Contraseña"
+                                        name="password2"
+                                        className={styles.input}
+                                        autoComplete="new-password"
+                                    />
+                                    <div className={styles.error}>
+                                        <ErrorMessage name="password2" />
+                                    </div>
+                                </div>
                                 <button
                                     className={styles.formBtn}
                                     type='submit'
                                 >
-                                    Registrarse
+                                    {loading ? 'Cargando...' : 'Registrarme'}
                                 </button>
                             </form>
                         )}
