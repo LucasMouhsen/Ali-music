@@ -19,8 +19,8 @@ module.exports = {
                 email: user.email,
                 number: user.number,
                 avatar: user.avatar,
-                rol: user.rol
-
+                rol: user.rol,
+                id: user.id
             });
         } catch (error) {
             console.error(error);
