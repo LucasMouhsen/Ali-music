@@ -1,0 +1,96 @@
+.boxProfile {
+    padding: 70px;
+    max-width: 80%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 
+        "boxInfo boxCart"
+        "boxInfo boxProducts"
+        "boxInfo boxProducts";
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    justify-items: center;
+    gap: 2rem;
+}
+.title {
+    font-size: 22px;
+    width: 100%;
+    max-height: 35px;
+    border-bottom: 1px solid #000;
+    padding-left: 1rem;
+}
+.boxProfile .boxInfo{
+    background-color: var(--background-form-login);
+    box-shadow: rgba(0, 0, 0, 0.349) 0px 5px 15px;
+    width: 100%;
+    max-height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5rem;
+    grid-area: boxInfo;
+    border-radius: 15px;
+}
+.boxProfile .boxInfo .boxImage{
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+.boxProfile .boxInfo .boxImage .image{
+    max-width: 250px;
+}
+.boxProfile .boxInfo .boxDataUser{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+.boxProfile .boxInfo .boxDataUser p{
+    font-weight: 600;
+    border-bottom: 1px solid #00000043;
+    padding: .7rem;
+}
+.boxProfile .boxInfo .boxDataUser span{
+    font-weight: 400;
+}
+.boxProfile .boxInfo .dataUser{
+    display: flex;
+    justify-content:  space-between;
+}
+
+.boxProfile .boxCart{
+    width: 100%;
+    min-height: 30vh;
+    grid-area: boxCart;
+    background-color: var(--background-form-login);
+    box-shadow: rgba(0, 0, 0, 0.349) 0px 5px 15px;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.boxProfile .boxProducts{
+    width: 100%;
+    grid-area: boxProducts;
+    background-color: var(--background-form-login);
+    box-shadow: rgba(0, 0, 0, 0.349) 0px 5px 15px;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.boxProfile .boxProduct{
+    width: 100%;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
