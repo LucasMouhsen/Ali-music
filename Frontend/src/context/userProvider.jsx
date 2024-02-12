@@ -24,7 +24,8 @@ const UserProvider = ({ children }) => {
       }
     }
     const storedToken = window.localStorage.getItem('loginAppUser');
-    if (storedToken) {
+    const isAuthenticated = !!storedToken;
+    if (isAuthenticated) {
       // Elimina las comillas del token antes de pasarlo a getUser
       const token = storedToken.substring(1, storedToken.length - 1);
       getUser(token);
