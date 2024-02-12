@@ -4,28 +4,38 @@
     margin: 0 auto;
     min-height: 100vh;
     display: grid;
-    grid-template-areas: 
-        "boxInfo boxCart"
+    grid-template-areas:
         "boxInfo boxProducts"
-        "boxInfo boxProducts";
+        "boxInfo boxProducts"
+        "boxInfo boxCart";
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     justify-content: center;
     justify-items: center;
     gap: 2rem;
 }
-.title {
-    font-size: 22px;
+
+.boxTitle {
     width: 100%;
     max-height: 35px;
     border-bottom: 1px solid #000;
-    padding-left: 1rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.boxProfile .boxInfo{
+
+.boxTitle .title {
+    font-size: 22px;
+}
+.boxTitle .icon{
+    font-size: 22px;
+    cursor: pointer;
+}
+.boxProfile .boxInfo {
     background-color: var(--background-form-login);
     box-shadow: rgba(0, 0, 0, 0.349) 0px 5px 15px;
     width: 100%;
-    max-height: 70vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -33,15 +43,18 @@
     grid-area: boxInfo;
     border-radius: 15px;
 }
-.boxProfile .boxInfo .boxImage{
+
+.boxProfile .boxInfo .boxImage {
     width: 100%;
     text-align: center;
     padding: 1rem;
 }
-.boxProfile .boxInfo .boxImage .image{
+
+.boxProfile .boxInfo .boxImage .image {
     max-width: 250px;
 }
-.boxProfile .boxInfo .boxDataUser{
+
+.boxProfile .boxInfo .boxDataUser {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -49,20 +62,23 @@
     gap: 1rem;
     padding: 1rem;
 }
-.boxProfile .boxInfo .boxDataUser p{
+
+.boxProfile .boxInfo .boxDataUser p {
     font-weight: 600;
     border-bottom: 1px solid #00000043;
     padding: .7rem;
 }
-.boxProfile .boxInfo .boxDataUser span{
+
+.boxProfile .boxInfo .boxDataUser span {
     font-weight: 400;
 }
-.boxProfile .boxInfo .dataUser{
+
+.boxProfile .boxInfo .dataUser {
     display: flex;
-    justify-content:  space-between;
+    justify-content: space-between;
 }
 
-.boxProfile .boxCart{
+.boxProfile .boxCart {
     width: 100%;
     min-height: 30vh;
     grid-area: boxCart;
@@ -75,7 +91,8 @@
     justify-content: center;
 
 }
-.boxProfile .boxProducts{
+
+.boxProfile .boxProducts {
     width: 100%;
     grid-area: boxProducts;
     background-color: var(--background-form-login);
@@ -87,7 +104,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-.boxProfile .boxProduct{
+
+.boxProfile .boxProduct {
     width: 100%;
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
     display: grid;
