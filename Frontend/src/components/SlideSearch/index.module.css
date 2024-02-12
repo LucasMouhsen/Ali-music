@@ -13,6 +13,6 @@
     padding: .3rem 0;
     color: #666;
 }
-.category:last-child{
+.deleteFilter{
     border-top: 1px  solid #666666;
 }
