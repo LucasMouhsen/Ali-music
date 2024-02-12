@@ -20,14 +20,15 @@ export default function Header() {
     }
 
     function toggleCategory(category) {
-        setCategory(category)
+        window.location.href = '/products'
+        return setCategory(category)
     }
     return (
         <div className={styles.header}>
             <div className={styles.headerBottom}>
                 <div className={styles.boxPages}>
+                    <Button text='Inicio'  href={() => window.location.href = '/'}/>
                     <Button text='Productos' href={() => window.location.href = '/products'} />
-                    <Button text='Guitarras'  href={() => window.location.href = '/products'} />
                     <Button text='About' href={() => window.location.href = '/about'} />
                     <Button text='Support' href={() => window.location.href = '/support'} />
                 </div>
