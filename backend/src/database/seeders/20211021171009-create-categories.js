@@ -4,7 +4,8 @@ let categories = require("../../data/categories")
 function datos () {
   for (let i = 0; i < categories.length; i++) {
     categories[i]={
-      category: categories[i],
+      category: categories[i].category,
+      groupId: categories[i].groupId,
       createdAt: new Date,
       updatedAt: new Date
     }

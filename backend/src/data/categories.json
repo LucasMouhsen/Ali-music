@@ -1,3 +1,82 @@
 [
-    "Instrumentos de cuerdas","Instrumentos de viento","Instrumentos de percusión","Teclados y pianos","Micrófonos y amplificadores","Equipo de grabación","Otros"
+    {
+        "category": "guitarra",
+        "groupId": 1
+    },
+    {
+        "category": "bajo",
+        "groupId": 1
+    },
+    {
+        "category": "viola",
+        "groupId": 1
+    },
+    {
+        "category": "ukelele",
+        "groupId": 1
+    },
+    {
+        "category": "acordeon",
+        "groupId": 2
+    },
+    {
+        "category": "armonica",
+        "groupId": 2
+    },
+    {
+        "category": "saxo",
+        "groupId": 2
+    },
+    {
+        "category": "trompeta",
+        "groupId": 2
+    },
+    {
+        "category": "bateria",
+        "groupId": 3
+    },
+    {
+        "category": "timbaleta",
+        "groupId": 3
+    },
+    {
+        "category": "teclado",
+        "groupId": 4
+    },
+    {
+        "category": "piano",
+        "groupId": 4
+    },
+    {
+        "category": "sintetizador",
+        "groupId": 4
+    },
+    {
+        "category": "soporte Para microfono",
+        "groupId": 5
+    },
+    {
+        "category": "microfono",
+        "groupId": 5
+    },
+    {
+        "category": "altavoces",
+        "groupId": 5
+    },
+    {
+        "category": "escudo acustico",
+        "groupId": 6
+    },
+    {
+        "category": "consola",
+        "groupId": 6
+    },
+    {
+        "category": "varilla",
+        "groupId": 7
+    },
+    {
+        "category": "puas",
+        "groupId": 7
+    }
 ]

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { products, createProduct, editProduct, deleteProduct, categories } = require('../controllers/productsController')
+const { products, createProduct, editProduct, deleteProduct, categories, groupCategories } = require('../controllers/productsController')
 const uploadProduct = require('../middleware/fotoProductMulter')
 
 /* Validacion producto */
@@ -11,6 +11,7 @@ const userExtractor = require('../middleware/userExtractor')
 
 router.get('/', products)
 router.get('/categories', categories)
+router.get('/groupCategories', groupCategories)
 router.post('/create', userExtractor,   uploadProduct.array('image'), productValidation, createProduct)
 router.post('/edit/:id', userExtractor, uploadProduct.array('image'), productValidation, editProduct)
 router.post('/delete/:id', userExtractor, deleteProduct)

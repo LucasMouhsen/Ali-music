@@ -7,7 +7,6 @@ const queryInterface = db.sequelize.getQueryInterface();
 module.exports = {
     products: async (req, res) => {
         const { id, name, category } = req.query;
-
         // Inicializar options sin ninguna restricción específica
         let options = {
             include: ['images', 'productStates']
@@ -26,7 +25,7 @@ module.exports = {
         }
         if (category) {
             whereCondition.CategoryId = {
-                [Op.eq]: category,
+                [Op.eq]: category
             };
         }
         // Aplicar la condición de búsqueda solo si hay alguna condición definida
@@ -54,20 +53,34 @@ module.exports = {
         return res.json(data);
     },
     categories: async (req, res) => {
-        // buscamos las categorias por base
         try {
             const categories = await db.Category.findAll();
-            // solo nos quedamos con id y category
-            const categoryNames = categories.map(category => ({
+            const DataCategories = categories.map((category) => ({
                 id: category.id,
-                category: category.category
-            }));
-            return res.json(categoryNames);
+                category: category.category,
+                groupId: category.groupId
+            }))
+            return res.json(DataCategories);
         } catch (error) {
             console.error("Error al obtener las categorías:", error);
             res.status(500).json({ error: "Error al obtener las categorías" });
         }
     },
+
+    groupCategories: async (req, res) => {
+        try {
+            const groupCategories = await db.GroupCategories.findAll();
+            const DataGroupCategories = groupCategories.map((groupCategory) => ({
+                id: groupCategory.id,
+                category: groupCategory.GroupCategories
+            }))
+            return res.json(DataGroupCategories);
+        } catch (error) {
+            console.error("Error al obtener los grupos de categorías:", error);
+            res.status(500).json({ error: "Error al obtener los grupos de categorías" });
+        }
+    },
+
     createProduct: (req, res) => {
         // Validamos que no lleguen errores del middleware
         let errors = validationResult(req);
