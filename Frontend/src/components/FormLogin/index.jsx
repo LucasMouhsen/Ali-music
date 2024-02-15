@@ -2,6 +2,7 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { userLogin } from '../../services/userLogin.services';
 import { useState } from 'react';
+import { InputForm } from '../input';
 
 export default function FormLogin({ styles }) {
     const [loading, setLoading] = useState(false);
@@ -64,31 +65,21 @@ export default function FormLogin({ styles }) {
                                         </Alert>
                                     )
                                 }
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="emailLogin"
-                                        placeholder="Mail"
-                                        name="emailLogin"
-                                        className={styles.input}
-                                        autoComplete="email"
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="emailLogin" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="passwordLogin"
-                                        type="password"
-                                        placeholder="Contraseña"
-                                        name="passwordLogin"
-                                        className={styles.input}
-                                        autoComplete="password"
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="passwordLogin" />
-                                    </div>
-                                </div>
+                                <InputForm
+                                    id="emailLogin"
+                                    placeholder="Mail"
+                                    name="emailLogin"
+                                    className={styles.input}
+                                    autoComplete="email"
+                                />
+                                <InputForm
+                                    id="passwordLogin"
+                                    type="password"
+                                    placeholder="Contraseña"
+                                    name="passwordLogin"
+                                    className={styles.input}
+                                    autoComplete="password"
+                                />
                                 <button
                                     className={styles.formBtn}
                                     type='submit'

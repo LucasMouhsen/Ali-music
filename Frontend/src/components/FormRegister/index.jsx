@@ -1,7 +1,8 @@
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { userRegister } from '../../services/userRegister.services';
 import { useState } from 'react';
+import { InputForm } from '../input';
 
 export default function FormRegister({ styles }) {
     const [loading, setLoading] = useState()
@@ -73,78 +74,48 @@ export default function FormRegister({ styles }) {
                                         </Alert>
                                     )
                                 }
-                                <div className={styles.boxInput}>
 
-                                    <Field
-                                        id="firstName"
-                                        placeholder="Nombre"
-                                        name="firstName"
-                                        className={styles.input}
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="firstName" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="lastName"
-                                        placeholder="Apellido"
-                                        name="lastName"
-                                        className={styles.input}
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="lastName" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="userName"
-                                        placeholder="Usuario"
-                                        name="userName"
-                                        className={styles.input}
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="userName" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="email"
-                                        placeholder="Mail"
-                                        name="email"
-                                        className={styles.input}
-                                        autoComplete="email"
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="email" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="password"
-                                        type="password"
-                                        placeholder="Contraseña"
-                                        name="password"
-                                        className={styles.input}
-                                        autoComplete="password"
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="password" />
-                                    </div>
-                                </div>
-                                <div className={styles.boxInput}>
-                                    <Field
-                                        id="password2"
-                                        type="password"
-                                        placeholder="Repetir Contraseña"
-                                        name="password2"
-                                        className={styles.input}
-                                        autoComplete="new-password"
-                                    />
-                                    <div className={styles.error}>
-                                        <ErrorMessage name="password2" />
-                                    </div>
-                                </div>
+                                <InputForm
+                                    id="firstName"
+                                    placeholder="Nombre"
+                                    name="firstName"
+                                    className={styles.input}
+                                />
+                                <InputForm
+                                    id="lastName"
+                                    placeholder="Apellido"
+                                    name="lastName"
+                                    className={styles.input}
+                                />
+                                <InputForm
+                                    id="userName"
+                                    placeholder="Usuario"
+                                    name="userName"
+                                    className={styles.input}
+                                />
+                                <InputForm
+                                    id="email"
+                                    placeholder="Mail"
+                                    name="email"
+                                    className={styles.input}
+                                    autoComplete="email"
+                                />
+                                <InputForm
+                                    id="password"
+                                    type="password"
+                                    placeholder="Contraseña"
+                                    name="password"
+                                    className={styles.input}
+                                    autoComplete="password"
+                                />
+                                <InputForm
+                                    id="password2"
+                                    type="password"
+                                    placeholder="Repetir Contraseña"
+                                    name="password2"
+                                    className={styles.input}
+                                    autoComplete="new-password"
+                                />
                                 <button
                                     className={styles.formBtn}
                                     type='submit'
