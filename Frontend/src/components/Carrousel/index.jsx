@@ -26,9 +26,6 @@ export default function Carrousel() {
                 >
                     <div className="shadow"></div>
                     <div className="label">
-                        <div className="icon">
-                            <FontAwesomeIcon icon={faCartPlus} />
-                        </div>
                         <div className="info">
                             <div className="main">{product.name}</div>
                         </div>
