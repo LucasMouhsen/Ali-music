@@ -43,7 +43,9 @@
     grid-area: boxInfo;
     border-radius: 15px;
 }
-
+.form{
+    min-width: 500px;
+}
 .boxProfile .boxInfo .boxImage {
     width: 100%;
     text-align: center;
